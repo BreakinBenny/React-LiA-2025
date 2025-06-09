@@ -1,0 +1,1 @@
+Här ska "modeller" bevaras, exempelvis den för produkter i listan på huvudskärmen.

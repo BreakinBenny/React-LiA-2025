@@ -12,7 +12,7 @@ export default function ProductItem({title, image, thumb, shortdesc,
     return (
         //TODO: BILDEN måste visas
         //<ProductItem id="" title="" size="Small" {valuation}{'\n'} {store}</ProductItem>
-        <Text>{size} {title} {shortdesc} {category}{'\n'}{'\n'}{'\n'}{valuation}{'\n'}{store}</Text>
+        <Text>{size} {title} ({size}, {valuation} hjärtan) {shortdesc} {category}{'\n'}{'\n'}{'\n'}{store}</Text>
     );
 }
 

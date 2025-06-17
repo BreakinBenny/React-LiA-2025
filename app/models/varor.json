@@ -1,42 +1,45 @@
 [
     {
         "id": "skitäckligt",
-        "image": "[BILD]",
-        "title": "1: Jag fick bilen i huvet!"
+        "image": "@/assets/images/omorisprite.png",
+        "title": "Stor tröja",
+        "store": "Caroli",
+        "checkin": "2024-04-15",
+        "price": "4 hjärtan"
     },
     {
         "id": "johanlarsson",
         "image": "[BILD]",
-        "title": "2: (Fick du?)"
+        "title": "Annan sak"
     },
     {
         "id": "felixrecenserar",
         "image": "[BILD]",
-        "title": "3: Flytta på bilfan innan den klämmer sönder mig!"
+        "title": "Annan sak"
+    },
+    {
+        "id": "föremål",
+        "image": "[BILD]",
+        "title": "Annan sak"
+    },
+    {
+        "id": "en_till_vara",
+        "image": "[BILD]",
+        "title": "Annan sak"
     },
     {
         "id": "felixrecenserar",
         "image": "[BILD]",
-        "title": "3: Flytta på bilfan innan den klämmer sönder mig!"
+        "title": "Annan sak"
     },
     {
         "id": "felixrecenserar",
         "image": "[BILD]",
-        "title": "3: Flytta på bilfan innan den klämmer sönder mig!"
+        "title": "Annan sak"
     },
     {
         "id": "felixrecenserar",
         "image": "[BILD]",
-        "title": "3: Flytta på bilfan innan den klämmer sönder mig!"
-    },
-    {
-        "id": "felixrecenserar",
-        "image": "[BILD]",
-        "title": "3: Flytta på bilfan innan den klämmer sönder mig!"
-    },
-    {
-        "id": "felixrecenserar",
-        "image": "[BILD]",
-        "title": "3: Flytta på bilfan innan den klämmer sönder mig!"
+        "title": "Annan sak"
     }
 ]

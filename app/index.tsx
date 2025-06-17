@@ -1,53 +1,47 @@
 import React, { useState } from "react";
-import { Button, Dimensions, FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
-import varor from "./models/varor.json";
+import { Button, Dimensions, FlatList, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import varor from "./models/varor.json"; //Must be moved to be inside the below function in future...
+import ProductItem from "./models/product";
 
 const { height, width } = Dimensions.get('window');
 
-
+// TODO: [Utanför detaljvyn] Var är produkten på lager?
+// Priset? När lades det till i databasen (så vi vet sakens ålder)?
 export default function Index() {
   const onButtonPress = () => {}
   const [dummy, dummyState] = useState("");
   const [text, onChangeText] = React.useState('Useless text... 🔎');
   const [number, onChangeNumber] = React.useState('');
 
+  // <ProductItem key={item.id} image={item.image}>{item.title} /></ProductItem>
+
   return (
     <SafeAreaView>
       <View style={ styles.page }>
         <Text style={ styles.text }>HUVUDSKÄRM</Text>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-            <View style={{ backgroundColor: 'white', height: 30, maxWidth: 200}}>
-                <TextInput style={{fontSize: 25}} placeholder="Sök...                    🔎" />
-            </View>
-            <Text style={{fontSize: 25, color: '#BBFFBB'}}>  +</Text>
+        <View style={{flex: 1, flexDirection: 'row', gap: 5}}>
+          <View style={{ backgroundColor: 'white', minWidth: 20}}>
+            <TextInput style={{fontSize: 25}} placeholder="Sök...                              🔎" />
+          </View>
+          <Button title="+" color='orange' onPress={() => {}} />
         </View>
-        
-      <Text style={ styles.text }>FLATLIST</Text>
-      <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 200, maxWidth: 800, padding: 5}}
+
+        <Text style={ styles.text }>FLATLIST</Text>
+        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 200, maxWidth: 800, padding: 5}}
           data={varor}
           renderItem={({ item }) => {
             return (
-              <Text key={item.id}>{item.image}{'\n'}{item.title}{'\n'}{'\n'}</Text>
+              <ProductItem key={item.id}>{item.title}</ProductItem>
+              <Text key={item.id}>{item.title} {'\n'}{'\n'}</Text>
             );
-         }}
-      />
+          }}
+        />
 
-
-      <Text style={ styles.text }>SCROLLVIEW</Text>
-      <ScrollView style={{maxHeight: 200}}>
-        <Text>-JAG FICK BILEN I HUVET!{'\n'}-(Fick du?){'\n'}-Flytta på bilfan innan den klämmer sönder mig!</Text>
-        <Text>-JAG FICK BILEN I HUVET!{'\n'}-(Fick du?){'\n'}-Flytta på bilfan innan den klämmer sönder mig!</Text>
-        <Text>-JAG FICK BILEN I HUVET!{'\n'}-(Fick du?){'\n'}-Flytta på bilfan innan den klämmer sönder mig!</Text>
-        <Text>-JAG FICK BILEN I HUVET!{'\n'}-(Fick du?){'\n'}-Flytta på bilfan innan den klämmer sönder mig!</Text>
-        <Text>-JAG FICK BILEN I HUVET!{'\n'}-(Fick du?){'\n'}-Flytta på bilfan innan den klämmer sönder mig!</Text>
-        <Text>-JAG FICK BILEN I HUVET!{'\n'}-(Fick du?){'\n'}-Flytta på bilfan innan den klämmer sönder mig!</Text>
-        <Text>-JAG FICK BILEN I HUVET!{'\n'}-(Fick du?){'\n'}-Flytta på bilfan innan den klämmer sönder mig!</Text>
-      </ScrollView>
         <View style={{flexDirection: 'row', margin: 15}}>
-            <Button title="In" color='lightgray' onPress={onButtonPress} />
-            <Button title="Ut" color='#999999' onPress={onButtonPress} />
+          <Button title="In" color='lightgray' onPress={onButtonPress} />
+          <Button title="Ut" color='#999999' onPress={onButtonPress} />
         </View>
-    </View>
+      </View>
     </SafeAreaView>
   );
 }

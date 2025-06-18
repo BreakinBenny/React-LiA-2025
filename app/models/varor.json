@@ -1,11 +1,12 @@
 [
     {
         "id": "skitäckligt",
-        "image": "@/assets/images/omorisprite.png",
-        "title": "Stor tröja",
+        "image": "@/assets/images/tiny_logo.png",
+        "title": "Tröja",
+        "size": "Stor",
         "store": "Caroli",
         "checkin": "2024-04-15",
-        "price": "4 hjärtan"
+        "valuation": "4 💚"
     },
     {
         "id": "johanlarsson",

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button, Dimensions, FlatList, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, Dimensions, FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
 import varor from "./models/varor.json"; //Must be moved to be inside the below function in future...
-import ProductItem from "./models/product";
 
 const { height, width } = Dimensions.get('window');
 
@@ -27,12 +26,17 @@ export default function Index() {
         </View>
 
         <Text style={ styles.text }>FLATLIST</Text>
-        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 200, maxWidth: 800, padding: 5}}
+        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 200, width: 400, padding: 10}}
           data={varor}
           renderItem={({ item }) => {
             return (
-              <ProductItem key={item.id}>{item.title}</ProductItem>
-              <Text key={item.id}>{item.title} {'\n'}{'\n'}</Text>
+              <View key={item.id}>
+                <Image source={require('@/assets/images/tiny_logo.png')} />
+                <Text style={{lineHeight: 20}} key={item.id}>
+                  ({item.size}) {item.title}, {item.valuation}{'\n'}
+                  Tillagd {item.checkin}, finns i butik: {item.store}{'\n'}
+                  </Text>
+              </View>
             );
           }}
         />

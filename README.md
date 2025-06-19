@@ -1,4 +1,6 @@
-# Welcome to your Expo app 👋
+# Welcome to BreakinBenny's React LiA Expo app 👋
+
+<img align="center" src="React LiA 2025 pic.png">
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 

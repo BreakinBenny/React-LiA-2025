@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Button, Dimensions, FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
-import varor from "./models/varor.json"; //Must be moved to be inside the below function in future...
+import { Button, Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 const { height, width } = Dimensions.get('window');
 
-// TODO: [Utanför detaljvyn] Var är produkten på lager?
-// Priset? När lades det till i databasen (så vi vet sakens ålder)?
-export default function Index() {
+// TODO: Detaljvyn, här visas fler av produktens egenskaper än i huvudskärmen?
+// ?
+export default function DetailView() {
   const onButtonPress = () => {}
   const [dummy, dummyState] = useState("");
   const [text, onChangeText] = React.useState('Useless text... 🔎');
@@ -17,29 +16,25 @@ export default function Index() {
   return (
     <SafeAreaView>
       <View style={ styles.page }>
-        <Text style={ styles.text }>HUVUDSKÄRM</Text>
+        <Text style={ styles.text }>DETALJVY</Text>
         <View style={{flex: 1, flexDirection: 'row', gap: 5}}>
-          <View style={{ backgroundColor: 'white', minWidth: 20}}>
+          <View style={{ backgroundColor: 'white', minWidth: 20, minHeight: 30}}>
             <TextInput style={{fontSize: 25}} placeholder="Sök...                              🔎" />
           </View>
           <Button title="+" color='orange' onPress={() => {}} />
         </View>
 
-        <Text style={ styles.text }>FLATLIST</Text>
-        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 200, width: 400, padding: 10}}
-          data={varor}
-          renderItem={({ item }) => {
-            return (
-              <View key={item.id}>
-                <Image source={require('@/assets/images/tiny_logo.png')} />
-                <Text style={{lineHeight: 20}} key={item.id}>
-                  ({item.size}) {item.title}, {item.valuation}{'\n'}
-                  Tillagd {item.checkin}, finns i butik: {item.store}{'\n'}
-                </Text>
-              </View>
-            );
-          }}
-        />
+        <Text style={{ padding: 25 }}>SCROLLVIEW</Text>
+        <ScrollView style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 300, width: 500, padding: 10}}>
+          <View style={{flexDirection: 'row', gap: 10}}>
+            <Image source={require('@/assets/images/favicon.png')} />
+            <Image source={require('@/assets/images/favicon.png')} />
+            <Text>PRODUKT (TRÖJA, BYXOR, SKOR, MÖSSA...)</Text>
+          </View>
+
+            <Text style={{lineHeight: 20, padding: 30}}>VARA MED MER BESKRIVNING ÄN PÅ HUVUDSKÄRMEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}
+              I lager på: CAROLI, (och/eller) KRONPRINSEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}</Text>
+        </ScrollView>
 
         <View style={{flexDirection: 'row', margin: 15}}>
           <Button title="In" color='lightgray' onPress={onButtonPress} />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Dimensions, FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, Dimensions, FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
 import varor from "./models/varor.json"; //Must be moved to be inside the below function in future...
 
 const { height, width } = Dimensions.get('window');
@@ -26,17 +26,20 @@ export default function Index() {
         </View>
 
         <Text style={ styles.text }>FLATLIST</Text>
-        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 200, width: 400, padding: 10}}
+        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
           data={varor}
           renderItem={({ item }) => {
             return (
-              <View key={item.id}>
-                <View style={{flexDirection: 'row', gap: 5}}>
-                  <Image source={require('@/assets/images/tiny_logo.png')} />
-                  <Image source={require('@/assets/images/tiny_logo.png')} />
+              // Ska alla plagg visa minst två bilder utanför detaljvyn?
+              <Pressable onPress={() => {}} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}>
+                <View key={item.id}>
+                  <View style={{flexDirection: 'row', gap: 5}}>
+                    <Image source={require('@/assets/images/tiny_logo.png')} />
+                    <Image source={require('@/assets/images/tiny_logo.png')} />
+                  </View>
+                  <Text style={{lineHeight: 20}} key={item.id}>({item.size}) {item.title}, {item.valuation}{'\n'}{'\n'}Tillagd {item.checkin}, finns i butik: {item.store}{'\n'}{'\n'}</Text>
                 </View>
-                <Text style={{lineHeight: 20}} key={item.id}>({item.size}) {item.title}, {item.valuation}{'\n'}{'\n'}Tillagd {item.checkin}, finns i butik: {item.store}{'\n'}{'\n'}</Text>
-              </View>
+              </Pressable>
             );
           }}
         />

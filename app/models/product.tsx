@@ -6,7 +6,7 @@ type ProductItemProps = { title: string, pic: string,
 };
 
 export function ProductItem({title, pic, thumb, shortdesc, category = 0,
-    size = 1, valuation, checkin, store}: ProductItemProps) {
+    size = 0, valuation, checkin, store}: ProductItemProps) {
 
     return (
         //TODO: BILDEN måste visas
@@ -19,6 +19,6 @@ export function ProductItem({title, pic, thumb, shortdesc, category = 0,
     );
 }
 
-const enum Category { "Top", "Bottom", "Shoes", "Jacket" }
-const enum Size { "Small", "Medium", "Large" }
-const enum Store { "Caroli", "Kronprinsen" }
+enum Category { "N/A", "Top", "Bottom", "Shoes", "Jacket" }
+enum Size { "N/A", "Small", "Medium", "Large" }
+enum Store { "Caroli", "Kronprinsen" }

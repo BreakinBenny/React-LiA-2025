@@ -31,11 +31,11 @@ export default function Index() {
           renderItem={({ item }) => {
             return (
               <View key={item.id}>
-                <Image source={require('@/assets/images/tiny_logo.png')} />
-                <Text style={{lineHeight: 20}} key={item.id}>
-                  ({item.size}) {item.title}, {item.valuation}{'\n'}
-                  Tillagd {item.checkin}, finns i butik: {item.store}{'\n'}
-                </Text>
+                <View style={{flexDirection: 'row', gap: 5}}>
+                  <Image source={require('@/assets/images/tiny_logo.png')} />
+                  <Image source={require('@/assets/images/tiny_logo.png')} />
+                </View>
+                <Text style={{lineHeight: 20}} key={item.id}>({item.size}) {item.title}, {item.valuation}{'\n'}{'\n'}Tillagd {item.checkin}, finns i butik: {item.store}{'\n'}{'\n'}</Text>
               </View>
             );
           }}

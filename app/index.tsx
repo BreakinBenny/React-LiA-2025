@@ -37,7 +37,7 @@ export default function Index() {
                     <Image source={require('@/assets/images/tiny_logo.png')} />
                     <Image source={require('@/assets/images/tiny_logo.png')} />
                   </View>
-                  <Text style={{lineHeight: 20}} key={item.id}>({item.size}) {item.title}, {item.valuation}{'\n'}{'\n'}Tillagd {item.checkin}, finns i butik: {item.store}{'\n'}{'\n'}</Text>
+                  <Text style={{lineHeight: 20}} key={item.id}>({item.size}) {item.title}, {item.valuation} 💚{'\n'}{'\n'}Tillagd {item.checkin}, finns i butik: {item.store}</Text>
                 </View>
               </Pressable>
             );

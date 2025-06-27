@@ -5,7 +5,7 @@ type ProductItemProps = { title: string, pic: string,
     size: Size, valuation: 0, checkin: Date, store: Store
 };
 
-export function ProductItem({title, pic, thumb, shortdesc, category = 0,
+export default function ProductItem({title, pic, thumb, shortdesc, category = 0,
     size = 0, valuation, checkin, store}: ProductItemProps) {
 
     return (

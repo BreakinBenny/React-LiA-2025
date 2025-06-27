@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React, { useState } from "react";
 import { Button, Dimensions, FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
 import varor from "./models/varor.json"; //Must be moved to be inside the below function in future...
@@ -31,15 +32,17 @@ export default function Index() {
           renderItem={({ item }) => {
             return (
               // Ska alla plagg visa minst två bilder utanför detaljvyn?
-              <Pressable onPress={() => {}} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}>
-                <View key={item.id}>
-                  <View style={{flexDirection: 'row', gap: 5}}>
-                    <Image source={require('@/assets/images/tiny_logo.png')} />
-                    <Image source={require('@/assets/images/tiny_logo.png')} />
+              <Link href="/detail" asChild>
+                <Pressable /*onPress={() => {}}*/ style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}>
+                  <View key={item.id}>
+                    <View style={{flexDirection: 'row', gap: 5}}>
+                      <Image source={require('@/assets/images/tiny_logo.png')} />
+                      <Image source={require('@/assets/images/tiny_logo.png')} />
+                    </View>
+                    <Text style={{lineHeight: 20}} key={item.id}>({item.size}) {item.title}, {item.valuation} 💚{'\n'}{'\n'}Tillagd {item.checkin}, finns i butik: {item.store}</Text>
                   </View>
-                  <Text style={{lineHeight: 20}} key={item.id}>({item.size}) {item.title}, {item.valuation} 💚{'\n'}{'\n'}Tillagd {item.checkin}, finns i butik: {item.store}</Text>
-                </View>
-              </Pressable>
+                </Pressable>
+              </Link>
             );
           }}
         />

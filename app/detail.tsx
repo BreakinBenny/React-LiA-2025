@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import SearchBar from "./components/SearchBar";
 
 const { height, width } = Dimensions.get('window');
 
@@ -18,13 +19,11 @@ export default function DetailView() {
       <View style={ styles.page }>
         <Text style={ styles.text }>DETALJVY</Text>
         <View style={{flex: 1, flexDirection: 'row', gap: 5}}>
-          <View style={{ backgroundColor: 'white', minWidth: 20, minHeight: 30}}>
-            <TextInput style={{fontSize: 25}} placeholder="Sök...                              🔎" />
-          </View>
+          <SearchBar />
           <Button title="+" color='orange' onPress={() => {}} />
         </View>
 
-        <Text style={{ padding: 25 }}>SCROLLVIEW</Text>
+        <Text style={ styles.text }>SCROLLVIEW</Text>
         <ScrollView style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 300, width: 500, padding: 10}}>
           <View style={{flexDirection: 'row', gap: 10}}>
             <Image source={require('@/assets/images/favicon.png')} />
@@ -47,7 +46,6 @@ export default function DetailView() {
 
 const styles = StyleSheet.create({
   page: {
-    marginTop: 40,
     backgroundColor: "#00BB00",
     justifyContent: "center",
     alignItems: "center"

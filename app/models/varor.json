@@ -4,8 +4,10 @@
         "image": "@/assets/images/tiny_logo.png",
         "title": "Tröja",
         "size": "Stor",
+        "brand": "Nike",
         "store": "Caroli",
         "checkin": "2024-04-15",
+        "sold": "2024-04-25",
         "valuation": "4"
     },
     {

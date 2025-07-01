@@ -1,6 +1,7 @@
 import { Link } from 'expo-router';
 import React, { useState } from "react";
-import { Button, Dimensions, FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, Dimensions, FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import SearchBar from "./components/SearchBar";
 import varor from "./models/varor.json"; //Must be moved to be inside the below function in future...
 
 const { height, width } = Dimensions.get('window');
@@ -20,9 +21,7 @@ export default function Index() {
       <View style={ styles.page }>
         <Text style={ styles.text }>HUVUDSKÄRM</Text>
         <View style={{flex: 1, flexDirection: 'row', gap: 5}}>
-          <View style={{ backgroundColor: 'white', minWidth: 20}}>
-            <TextInput style={{fontSize: 25}} placeholder="Sök...                              🔎" />
-          </View>
+          <SearchBar />
           <Button title="+" color='orange' onPress={() => {}} />
         </View>
 
@@ -39,7 +38,11 @@ export default function Index() {
                       <Image source={require('@/assets/images/tiny_logo.png')} />
                       <Image source={require('@/assets/images/tiny_logo.png')} />
                     </View>
-                    <Text style={{lineHeight: 20}} key={item.id}>({item.size}) {item.title}, {item.valuation} 💚{'\n'}{'\n'}Tillagd {item.checkin}, finns i butik: {item.store}</Text>
+                    <Text style={{lineHeight: 20}} key={item.id}>
+                      ({item.size ? `${item.size}`: 'Ingen/Okänd storlek'}) {item.title}{item.brand ? ` (${item.brand})`: null}, {item.valuation ? `${item.valuation}` : `Ospecificerade`} 💚{'\n'}{'\n'}
+
+                      Tillagd {item.checkin ? `${item.checkin}`: '[DATUM SAKNAS!]'}, {item.sold ? `såldes ${item.sold}, ` : null}i butik: {item.store}
+                    </Text>
                   </View>
                 </Pressable>
               </Link>
@@ -58,7 +61,6 @@ export default function Index() {
 
 const styles = StyleSheet.create({
   page: {
-    marginTop: 40,
     backgroundColor: "#00BB00",
     justifyContent: "center",
     alignItems: "center"

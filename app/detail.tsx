@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import SearchBar from "./components/SearchBar";
+import ProductItem from "./models/ProductItem";
 
 const { height, width } = Dimensions.get('window');
 
@@ -24,7 +25,7 @@ export default function DetailView() {
         </View>
 
         <Text style={ styles.text }>SCROLLVIEW</Text>
-        <ScrollView style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 300, width: 500, padding: 10}}>
+        <ScrollView style={{margin: 30, backgroundColor: 'lightgray', width: 500, padding: 10}}>
           <View style={{flexDirection: 'row', gap: 10}}>
             <Image source={require('@/assets/images/favicon.png')} />
             <Image source={require('@/assets/images/favicon.png')} />
@@ -33,6 +34,19 @@ export default function DetailView() {
 
             <Text style={{lineHeight: 20, padding: 30}}>VARA MED MER BESKRIVNING ÄN PÅ HUVUDSKÄRMEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}
               I lager på: CAROLI, (och/eller) KRONPRINSEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}</Text>
+        </ScrollView>
+        <ScrollView style={{backgroundColor: 'yellow', width: 500, padding: 10}}>
+          <ProductItem title="[Produkt]" brand="[Inget märke]" pic={require('@/assets/images/favicon.png')}
+            thumb={require('@/assets/images/favicon.png')}
+            //id="dföjlr"
+            size={1}
+            checkin={new Date("2024-04-25")}
+            valuation={100}
+            shortdesc=""
+            sold={false}
+            store={1}
+            category={1}
+          />
         </ScrollView>
 
         <View style={{flexDirection: 'row', margin: 15}}>

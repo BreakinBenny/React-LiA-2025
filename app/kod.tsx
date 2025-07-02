@@ -24,18 +24,18 @@ export default function App() {
 
       </View>
       <View style={ styles.otherstyle }>
-        <Text style={ styles.text }>React Native är rätt kul iallafall. Se bara hur mycket text som kan finnas här, men sen ska funktionerna komma.</Text>
+        <Text style={ styles.text }>React Native är rätt kul iallafall.{'\n'}
+          Se bara hur mycket text som kan finnas här, men sen ska funktionerna komma.</Text>
       </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  page: { marginTop: 40, backgroundColor: "#00AA00", justifyContent: "center", alignItems: "center" },
+  page: { backgroundColor: "#00AA00", justifyContent: "center", alignItems: "center" },
   text: { fontSize: 22, color: "white", margin: 10, padding: 5 },
   selectedText: { backgroundColor: "orange", color: "black" },
-  otherstyle: { flex: 1, justifyContent: "space-around",
-    alignItems: "flex-start", backgroundColor: "#777" },
+  otherstyle: { flex: 1, justifyContent: "space-around", alignItems: "flex-start", backgroundColor: "#777" },
   picStyle: { resizeMode: "center", flex: 1, width: Dimensions.get("window").width -50, height: 100 },
   flexstuff: { flex: 1, fontSize: 25, color: "azure", margin: 20, padding: 10,
     flexDirection: "row", justifyContent: "flex-end", alignItems: "flex-end" }

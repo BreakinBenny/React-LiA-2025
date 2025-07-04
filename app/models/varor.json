@@ -2,64 +2,50 @@
     {
         "id": "skitäckligt",
         "image": "@/assets/images/tiny_logo.png",
-        "title": "Tröja",
-        "category": 1,
-        "colors": {
-            "color1": "#000",
-            "color2": "#fff"
-        },
-        "pattern": 1,
-        "size": "Stor",
-        "brand": "Nike",
-        "store": 1,
-        "checkin": "2024-04-15",
-        "sold": true,
-        "solddate": "2024-04-25",
-        "price": 80
+        "title": "Pocketbok",
+        "brand": "",
+        "category": 6,
+        "store": 2,
+        "checkin": "N/A",
+        "sold": false,
+        "solddate": "N/A",
+        "price": 20
     },
     {
         "id": "johanlarsson",
         "image": "[BILD]",
-        "title": "Annan sak",
-        "size": "Medium",
+        "title": "Blommig blus",
         "brand": "",
+        "size": 3,
+        "material": "Polyester",
+        "pattern": "Mönster (Blommor i olika färger)",
         "checkin": "2024-03-28",
-        "sold": false,
-        "price": 140,
+        "price": 80,
         "store": 2
     },
     {
         "id": "felixrecenserar",
         "image": "[BILD]",
-        "title": "Sak 3",
-        "brand": "Alga",
+        "title": "Linne",
+        "brand": "",
+        "size": 2,
+        "material": "85% bomull, 8% polyester, 7% ull",
+        "color": "Gul",
         "store": 2,
         "checkin": "2024-04-04",
-        "price": 40
+        "price": 120
     },
     {
-        "id": "föremål",
-        "image": "[BILD]",
-        "title": "Annan sak"
-    },
-    {
-        "id": "en_till_vara",
-        "image": "[BILD]",
-        "title": "Annan sak"
-    },
-    {
-        "id": "felixrecenserar",
-        "image": "[BILD]",
-        "title": "Annan sak"
-    },
-    {
-        "id": "felixrecenserar",
-        "image": "[BILD]",
-        "title": "Annan sak"
-    },
-    {
-        "id": "felixrecenserar",
-        "image": "[BILD]",
-        "title": "Annan sak"
+        "id": "Bil_i_huvet",
+        "title": "Shorts",
+        "brand": "",
+        "category": 2,
+        "size": 1,
+        "material": "Bomull(?)",
+        "color": "Svart",
+        "store": 2,
+        "price": 60,
+        "checkin": "N/A"
     }
+
 ]

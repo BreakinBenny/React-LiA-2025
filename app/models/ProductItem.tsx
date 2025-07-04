@@ -53,7 +53,7 @@ enum Category {
 }
 type Colors = {
     color1: '#000',
-    color2: '#000'
+    color2: '#999'
 }
 enum Size {
     Small = 1,

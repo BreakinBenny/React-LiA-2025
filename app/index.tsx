@@ -29,14 +29,17 @@ export default function Index() {
 
         {/* <Text style={ styles.text }>FLATLIST</Text> */}
         <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 500, padding: 10}}
-          data={varor}
-          renderItem={({ item }) => {
-            return (
-              // Ska alla plagg visa minst två bilder utanför detaljvyn?
+          data={varor} renderItem={({ item }) => {
+            return (  // Ska alla plagg visa minst två bilder utanför detaljvyn?
               <Link href="/detail" asChild>
                 <Pressable style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
                   onPress={( item ) => {
-                    
+                    /* I detaljvyn ska vi visa mer information om produkten, t.ex. storlek,
+                      färg, mönster (om applicerbart & definierat), pris, butik...
+                    */
+                    // console.log('Produkt nummer # vald:', item);
+
+
                   }}>
                   <View key={item.id}>
                     <View style={{flexDirection: 'row', gap: 5}}>
@@ -57,6 +60,7 @@ export default function Index() {
             );
           }}
         />
+        {/* <ProductList /> */}
 
         <View style={{flexDirection: 'row', margin: 15}}>
           <Button title="In" color='lightgray' onPress={onButtonPress} />

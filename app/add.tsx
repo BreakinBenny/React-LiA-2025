@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { generate } from "shortid";
 
 
 export default function AddView() {
-    const [dummy, dummyState] = useState("");
-
+    const [items, setItems] = useState([]);
+    const addItem = item => {
+      const newItem = { id: generate(), item }
+      setItems([ newItem, ...items ]);
+    }
+    
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
             <View style={ styles.page }>

@@ -3,22 +3,39 @@
         "id": "skitäckligt",
         "image": "@/assets/images/tiny_logo.png",
         "title": "Tröja",
+        "category": 1,
+        "colors": {
+            "color1": "#000",
+            "color2": "#fff"
+        },
+        "pattern": 1,
         "size": "Stor",
         "brand": "Nike",
-        "store": "Caroli",
+        "store": 1,
         "checkin": "2024-04-15",
-        "sold": "2024-04-25",
-        "valuation": "4"
+        "sold": true,
+        "solddate": "2024-04-25",
+        "price": 80
     },
     {
         "id": "johanlarsson",
         "image": "[BILD]",
-        "title": "Annan sak"
+        "title": "Annan sak",
+        "size": "Medium",
+        "brand": "",
+        "checkin": "2024-03-28",
+        "sold": false,
+        "price": 140,
+        "store": 2
     },
     {
         "id": "felixrecenserar",
         "image": "[BILD]",
-        "title": "Annan sak"
+        "title": "Sak 3",
+        "brand": "Alga",
+        "store": 2,
+        "checkin": "2024-04-04",
+        "price": 40
     },
     {
         "id": "föremål",

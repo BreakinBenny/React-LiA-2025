@@ -19,29 +19,37 @@ export default function Index() {
   return (
     <SafeAreaView>
       <View style={ styles.page }>
-        <Text style={ styles.text }>HUVUDSKÄRM</Text>
-        <View style={{flex: 1, flexDirection: 'row', gap: 5}}>
+        {/* <Text style={ styles.text }>HUVUDSKÄRM</Text> */}
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <SearchBar />
-          <Button title="+" color='orange' onPress={() => {}} />
+          <Link href="./add" asChild>
+            <Button title="➕" color='orange' onPress={() => {}} />
+          </Link>
         </View>
 
-        <Text style={ styles.text }>FLATLIST</Text>
-        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
+        {/* <Text style={ styles.text }>FLATLIST</Text> */}
+        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 500, padding: 10}}
           data={varor}
           renderItem={({ item }) => {
             return (
               // Ska alla plagg visa minst två bilder utanför detaljvyn?
               <Link href="/detail" asChild>
-                <Pressable /*onPress={() => {}}*/ style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}>
+                <Pressable style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
+                  onPress={( item ) => {
+                    
+                  }}>
                   <View key={item.id}>
                     <View style={{flexDirection: 'row', gap: 5}}>
                       <Image source={require('@/assets/images/tiny_logo.png')} />
                       <Image source={require('@/assets/images/tiny_logo.png')} />
                     </View>
-                    <Text style={{lineHeight: 20}} key={item.id}>
-                      ({item.size ? `${item.size}`: 'Ingen/Okänd storlek'}) {item.title}{item.brand ? ` (${item.brand})`: null}, {item.valuation ? `${item.valuation}` : `Ospecificerade`} 💚{'\n'}{'\n'}
+                    <Text style={{lineHeight: 25}} key={item.id}>
+                      ({item.size ? `${item.size}`: 'Ingen/Okänd storlek'}) {item.title}{item.brand ? ` (${item.brand})`: null}{'\n'}
 
-                      Tillagd {item.checkin ? `${item.checkin}`: '[DATUM SAKNAS!]'}, {item.sold ? `såldes ${item.sold}, ` : null}i butik: {item.store}
+                      Tillagd {item.checkin ? `${item.checkin}`: '[DATUM SAKNAS!]'}, {item.sold ? `såldes ${item.solddate} ` : null}i butik: {item.store}
+                    </Text>
+                    <Text style={{textAlign: 'right', fontWeight: 'bold', color: 'darkgreen'}}>
+                      {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚)` : `Inget pris satt!`}
                     </Text>
                   </View>
                 </Pressable>

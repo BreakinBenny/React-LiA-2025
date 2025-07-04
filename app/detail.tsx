@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Button, Dimensions, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import SearchBar from "./components/SearchBar";
 import ProductItem from "./models/ProductItem";
 
@@ -18,36 +18,41 @@ export default function DetailView() {
   return (
     <SafeAreaView>
       <View style={ styles.page }>
-        <Text style={ styles.text }>DETALJVY</Text>
-        <View style={{flex: 1, flexDirection: 'row', gap: 5}}>
+        {/* <Text style={ styles.text }>DETALJVY</Text> */}
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <SearchBar />
-          <Button title="+" color='orange' onPress={() => {}} />
         </View>
 
-        <Text style={ styles.text }>SCROLLVIEW</Text>
+        {/*
+        <View style={{flexDirection: 'row', margin: 10}}>
         <ScrollView style={{margin: 30, backgroundColor: 'lightgray', width: 500, padding: 10}}>
           <View style={{flexDirection: 'row', gap: 10}}>
             <Image source={require('@/assets/images/favicon.png')} />
-            <Image source={require('@/assets/images/favicon.png')} />
+            <Image source={require('@/assets/images/tiny_logo.png')} />
             <Text>PRODUKT (TRÖJA, BYXOR, SKOR, MÖSSA...)</Text>
           </View>
 
-            <Text style={{lineHeight: 20, padding: 30}}>VARA MED MER BESKRIVNING ÄN PÅ HUVUDSKÄRMEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}
-              I lager på: CAROLI, (och/eller) KRONPRINSEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}</Text>
+          <Text style={{lineHeight: 20, padding: 30}}>VARA MED MER BESKRIVNING ÄN PÅ HUVUDSKÄRMEN{'\n'}{'\n'}{'\n'}
+            I lager på: CAROLI, (och/eller) KRONPRINSEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}
+          </Text>
         </ScrollView>
-        <ScrollView style={{backgroundColor: 'yellow', width: 500, padding: 10}}>
+        */}
+        <ScrollView style={{margin: 30, backgroundColor: 'yellow', width: 500, padding: 10}}>
           <ProductItem title="[Produkt]" brand="[Inget märke]" pic={require('@/assets/images/favicon.png')}
             thumb={require('@/assets/images/favicon.png')}
             //id="dföjlr"
+            pattern={1}
             size={1}
             checkin={new Date("2024-04-25")}
-            valuation={100}
+            price={100}
             shortdesc=""
             sold={false}
+            solddate={new Date("2024-04-30")}
             store={1}
             category={1}
           />
         </ScrollView>
+        {/* </View> */}
 
         <View style={{flexDirection: 'row', margin: 15}}>
           <Button title="In" color='lightgray' onPress={onButtonPress} />

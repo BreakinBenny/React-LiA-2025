@@ -9,17 +9,18 @@ type ProductItemProps = {
     category: Category,
     size?: Size,
     price?: number,
-    colors?: Colors, // Två färger, t.ex. svart och röd
+    color1?: '#000', // Huvudfärgen, t.ex. svart ('#000')
+    color2?: '#fff', // Färg två, t.ex. vit ('#fff') i det här fallet
     pattern?: Pattern, // Om plagget har mönster, vilket?
     checkin: Date,
     sold: false,
-    solddate?: Date,
+    checkedout?: Date,
     store: Store
 };
 
 
 export default function ProductItem({title, brand, pic, thumb, shortdesc, category,
-    size, price, colors,checkin, sold,solddate, store}: ProductItemProps) {
+    size, pattern, price, color1, color2, checkin, sold, checkedout, store}: ProductItemProps) {
 
     return (
         //TODO: BILDEN måste visas
@@ -30,14 +31,19 @@ export default function ProductItem({title, brand, pic, thumb, shortdesc, catego
                 {pic ? <Image id="" source={require('@/assets/images/favicon.png')} /> : null}
                 {thumb ? <Image id="" source={require('@/assets/images/tiny_logo.png')} /> : null}
             </View>
-            <Text>{size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) {title} - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
+            <Text>{category<5 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) {title} - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
                 ({category ? `${category}` : 'Ingen kategori'}){'\n'}
-                {category<6 ? `${colors}` : null}{'\n'}
+                
+                {category<6 && color1 ? `${color1} ` : 'Inga färg vald'}, {category<6 && pattern ? `${pattern}` : 'Inget mönster'}{'\n'}
+                {category<6 && color2 ? `och ${color2}` : null}
                 
                 
                 {price ? `Pris: ${price} (${price / 20} 💚)` : 'PRIS SAKNAS!'}
                 {checkin ? ` - Tillagd ${checkin.toLocaleDateString()}` : '[DATUM SAKNAS!]'}{'\n'}{'\n'}
-                {sold ? `Såldes ${solddate} ` : null}i butik: {store}
+
+                {/* Såldes varan eller checkades den helt enkelt ut? Då visas antingen av följande nedan… */}
+                {sold&&checkedout ? `Såldes ${checkedout} ` : null}
+                {!sold&&checkedout ? `Togs ur registret ${checkedout} `: null}i butik: {store}
             </Text>
         </View>
     );
@@ -61,8 +67,8 @@ enum Size {
     Large
 }
 enum Pattern {
-    None, 
-    Solid = 1,
+    None,
+    Solid,
     Patterned
 }
 

@@ -23,8 +23,7 @@ export default function DetailView() {
           <SearchBar />
         </View>
 
-        {/*
-        <View style={{flexDirection: 'row', margin: 10}}>
+        {/* <View style={{flexDirection: 'row', margin: 10}}>
         <ScrollView style={{margin: 30, backgroundColor: 'lightgray', width: 500, padding: 10}}>
           <View style={{flexDirection: 'row', gap: 10}}>
             <Image source={require('@/assets/images/favicon.png')} />
@@ -35,19 +34,19 @@ export default function DetailView() {
           <Text style={{lineHeight: 20, padding: 30}}>VARA MED MER BESKRIVNING ÄN PÅ HUVUDSKÄRMEN{'\n'}{'\n'}{'\n'}
             I lager på: CAROLI, (och/eller) KRONPRINSEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}
           </Text>
-        </ScrollView>
-        */}
+        </ScrollView> */
+        }
         <ScrollView style={{margin: 30, backgroundColor: 'yellow', width: 500, padding: 10}}>
           <ProductItem title="[Produkt]" brand="[Inget märke]" pic={require('@/assets/images/favicon.png')}
             thumb={require('@/assets/images/favicon.png')}
             //id="dföjlr"
-            pattern={1}
+            pattern={0}
             size={1}
             checkin={new Date("2024-04-25")}
-            price={100}
+            price={120}
             shortdesc=""
             sold={false}
-            solddate={new Date("2024-04-30")}
+            checkedout={new Date("2024-04-30")}
             store={1}
             category={1}
           />

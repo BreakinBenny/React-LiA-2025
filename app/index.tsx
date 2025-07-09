@@ -10,9 +10,16 @@ const { height, width } = Dimensions.get('window');
 // Priset? När lades det till i databasen (så vi vet sakens ålder)?
 export default function Index() {
   const onButtonPress = () => {}
-  const [dummy, dummyState] = useState("");
   const [text, onChangeText] = React.useState('Useless text... 🔎');
   const [number, onChangeNumber] = React.useState('');
+
+  const [dummy, dummyState] = useState('');
+  const [hideSold, setHideSold] = useState(false);
+
+  const toggleHideSold = () => {
+    const newHideSold = hideSold === false ? true : false;
+    setHideSold(newHideSold);
+  }
 
   // <ProductItem key={item.id} image={item.image}>{item.title} /></ProductItem>
 
@@ -20,16 +27,14 @@ export default function Index() {
     <SafeAreaView>
       <View style={ styles.page }>
         {/* <Text style={ styles.text }>HUVUDSKÄRM</Text> */}
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <SearchBar />
-          <Link href="./add" asChild>
-            <Button title="➕" color='orange' onPress={() => {}} />
-          </Link>
-        </View>
+        <SearchBar />
+
+        {/* LÄGG IN FILTER HÄR… */}
+        
 
         {/* <Text style={ styles.text }>FLATLIST</Text> */}
-        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 500, padding: 10}}
-          data={varor} renderItem={({ item }) => {
+        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
+          data={varor} keyExtractor={item => item.id} renderItem={({ item }) => {
             return (  // Ska alla plagg visa minst två bilder utanför detaljvyn?
               <Link href="/detail" asChild>
                 <Pressable style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
@@ -47,9 +52,9 @@ export default function Index() {
                       <Image source={require('@/assets/images/tiny_logo.png')} />
                     </View>
                     <Text style={{lineHeight: 25}} key={item.id}>
-                      ({item.size ? `${item.size}`: 'Ingen/Okänd storlek'}) {item.title}{item.brand ? ` (${item.brand})`: null}{'\n'}
+                      {item.title}{item.category<6 && item.brand ? ` (${item.brand})`: null}{'\n'}
 
-                      Tillagd {item.checkin ? `${item.checkin}`: '[DATUM SAKNAS!]'}, {item.sold ? `såldes ${item.solddate} ` : null}i butik: {item.store}
+                      Tillagd {item.checkin ? `${item.checkin}`: '[DATUM SAKNAS!]'}, {item.sold ? `såldes ${item.checkoutdate} ` : null}i butik: {item.store}
                     </Text>
                     <Text style={{textAlign: 'right', fontWeight: 'bold', color: 'darkgreen'}}>
                       {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚)` : `Inget pris satt!`}

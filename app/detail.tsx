@@ -19,9 +19,7 @@ export default function DetailView() {
     <SafeAreaView>
       <View style={ styles.page }>
         {/* <Text style={ styles.text }>DETALJVY</Text> */}
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <SearchBar />
-        </View>
+        <SearchBar />
 
         {/* <View style={{flexDirection: 'row', margin: 10}}>
         <ScrollView style={{margin: 30, backgroundColor: 'lightgray', width: 500, padding: 10}}>
@@ -36,8 +34,8 @@ export default function DetailView() {
           </Text>
         </ScrollView> */
         }
-        <ScrollView style={{margin: 30, backgroundColor: 'yellow', width: 500, padding: 10}}>
-          <ProductItem title="[Produkt]" brand="[Inget märke]" pic={require('@/assets/images/favicon.png')}
+        <ScrollView style={{margin: 30, backgroundColor: 'yellow', width: 400, padding: 10}}>
+          <ProductItem title="[Produkt]" pic={require('@/assets/images/favicon.png')}
             thumb={require('@/assets/images/favicon.png')}
             //id="dföjlr"
             pattern={0}
@@ -46,7 +44,7 @@ export default function DetailView() {
             price={120}
             shortdesc=""
             sold={false}
-            checkedout={new Date("2024-04-30")}
+            checkoutdate={new Date("2024-04-30")}
             store={1}
             category={1}
           />

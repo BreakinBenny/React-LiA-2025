@@ -8,12 +8,13 @@
         "store": 2,
         "checkin": "N/A",
         "sold": false,
-        "solddate": "N/A",
+        "checkoutdate": "N/A",
         "price": 20
     },
     {
         "id": "johanlarsson",
         "image": "[BILD]",
+        "category": 1,
         "title": "Blommig blus",
         "brand": "",
         "size": 3,
@@ -27,6 +28,7 @@
         "id": "felixrecenserar",
         "image": "[BILD]",
         "title": "Linne",
+        "category": 1,
         "brand": "",
         "size": 2,
         "material": "85% bomull, 8% polyester, 7% ull",

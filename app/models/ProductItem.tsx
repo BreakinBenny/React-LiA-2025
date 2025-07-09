@@ -14,20 +14,20 @@ type ProductItemProps = {
     pattern?: Pattern, // Om plagget har mönster, vilket?
     checkin: Date,
     sold: false,
-    checkedout?: Date,
+    checkoutdate?: Date,
     store: Store
 };
 
 
 export default function ProductItem({title, brand, pic, thumb, shortdesc, category,
-    size, pattern, price, color1, color2, checkin, sold, checkedout, store}: ProductItemProps) {
+    size, pattern, price, color1, color2, checkin, sold, checkoutdate, store}: ProductItemProps) {
 
     return (
         //TODO: BILDEN måste visas
         //<ProductItem id="" title="" size="Small" {valuation}{'\n'} {store}</ProductItem>
 
         <View>
-            <View style={{flexDirection: 'row', gap: 5}}>
+            <View style={{flexDirection: 'row', gap: 5, marginBottom: 80}}>
                 {pic ? <Image id="" source={require('@/assets/images/favicon.png')} /> : null}
                 {thumb ? <Image id="" source={require('@/assets/images/tiny_logo.png')} /> : null}
             </View>
@@ -42,8 +42,8 @@ export default function ProductItem({title, brand, pic, thumb, shortdesc, catego
                 {checkin ? ` - Tillagd ${checkin.toLocaleDateString()}` : '[DATUM SAKNAS!]'}{'\n'}{'\n'}
 
                 {/* Såldes varan eller checkades den helt enkelt ut? Då visas antingen av följande nedan… */}
-                {sold&&checkedout ? `Såldes ${checkedout} ` : null}
-                {!sold&&checkedout ? `Togs ur registret ${checkedout} `: null}i butik: {store}
+                {sold&&checkoutdate ? `Såldes ${checkoutdate.toLocaleDateString()} ` : null}
+                {!sold&&checkoutdate ? `Togs ur registret ${checkoutdate.toLocaleDateString()} `: null}i butik: {store}
             </Text>
         </View>
     );

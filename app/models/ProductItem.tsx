@@ -28,10 +28,10 @@ export default function ProductItem({title, brand, pic, thumb, shortdesc, catego
 
         <View>
             <View style={{flexDirection: 'row', gap: 5, marginBottom: 80}}>
-                {pic ? <Image source={require(pic)} /> : <Image source={require('@/assets/images/react-logo.png')} />}
-                {thumb ? <Image source={require(thumb)} /> : <Image source={require('@/assets/images/favicon.png')} />}
+                {!pic ? <Image source={require('@/assets/images/react-logo.png')} /> : null}
+                {!thumb ? <Image source={require('@/assets/images/favicon.png')} /> : null}
             </View>
-            <Text>{category<5 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) {title} - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
+            <Text>{category<6 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) {title} - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
                 ({category ? `Kategori ${category}` : 'Ingen kategori'}){'\n'}
                 
                 {category<6 ? `${color1} ` : null}{category<6 ? `- ${pattern}` : null}{'\n'}

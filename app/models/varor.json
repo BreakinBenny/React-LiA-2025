@@ -1,7 +1,7 @@
 [
     {
         "id": "skitäckligt",
-        "image": "@/assets/images/tiny_logo.png",
+        "image": "",
         "title": "Pocketbok",
         "brand": "",
         "category": 6,
@@ -13,7 +13,7 @@
     },
     {
         "id": "johanlarsson",
-        "image": "[BILD]",
+        "image": "",
         "category": 1,
         "title": "Blommig blus",
         "brand": "",
@@ -26,7 +26,7 @@
     },
     {
         "id": "felixrecenserar",
-        "image": "[BILD]",
+        "image": "",
         "title": "Linne",
         "category": 1,
         "brand": "",
@@ -39,6 +39,7 @@
     },
     {
         "id": "Bil_i_huvet",
+        "image": "",
         "title": "Shorts",
         "brand": "",
         "category": 2,

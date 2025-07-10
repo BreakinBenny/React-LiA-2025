@@ -1,6 +1,7 @@
 import { Image, Text, View } from 'react-native';
 
 type ProductItemProps = {
+    id?: string, // Unikt ID för varje produkt
     title?: string,
     brand?: string, // Tillverkare, märke, musikband, artist mm...
     pic?: string,
@@ -19,7 +20,7 @@ type ProductItemProps = {
 };
 
 
-export default function ProductItem({title, brand, pic, thumb, shortdesc, category,
+export default function ProductItem({id, title, brand, pic, thumb, shortdesc, category,
     size, pattern, price, color1, color2, checkin, sold, checkoutdate, store}: ProductItemProps) {
 
     return (
@@ -28,8 +29,8 @@ export default function ProductItem({title, brand, pic, thumb, shortdesc, catego
 
         <View>
             <View style={{flexDirection: 'row', gap: 5, marginBottom: 80}}>
-                {!pic ? <Image source={require('@/assets/images/react-logo.png')} /> : null}
-                {!thumb ? <Image source={require('@/assets/images/favicon.png')} /> : null}
+                {!pic ? <Image source={require('@/assets/images/react-logo.png')} /> : <Image source={{ uri: pic }} />}
+                {!thumb ? <Image source={require('@/assets/images/favicon.png')} /> : <Image source={{ uri: thumb }} />}
             </View>
             <Text>{category<6 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) {title} - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
                 ({category ? `Kategori ${category}` : 'Ingen kategori'}){'\n'}

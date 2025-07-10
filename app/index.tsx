@@ -36,19 +36,22 @@ export default function Index() {
         <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
           data={varor} keyExtractor={item => item.id} renderItem={({ item }) => {
             return (  // Ska alla plagg visa minst två bilder utanför detaljvyn?
-              <Link href="/detail" asChild>
+              <Link href={`\/detail?id=${item.id}`} asChild>
                 <Pressable style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
                   onPress={( item ) => {
                     /* I detaljvyn ska vi visa mer information om produkten, t.ex. storlek,
                       färg, mönster (om applicerbart & definierat), pris, butik...
                     */
                     // console.log('Produkt nummer # vald:', item);
+                    // Varje vara i listan borde helt enkelt öppna en slags Alert som visar ProductItem.
+                    // Använd helst Alert istället för Link om vi är på mobil plattform.
                     
                   }}>
+                  {/* Gör sakerna här till en egen komponent! */}
                   <View key={item.id}>
                     <View style={{flexDirection: 'row', gap: 5}}>
-                      <Image source={require('@/assets/images/tiny_logo.png')} />
-                      <Image source={require('@/assets/images/tiny_logo.png')} />
+                      {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}
+                      {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}
                     </View>
                     <Text style={{lineHeight: 25}} key={item.id}>
                       {item.title}{item.category<6 && item.brand ? ` (${item.brand})`: null}{'\n'}
@@ -59,6 +62,7 @@ export default function Index() {
                       {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚).` : `Inget pris satt!`} {item.sold ? `Såldes ${item.checkoutdate} ` : null}i butik: {item.store}
                     </Text>
                   </View>
+                  {/* Gör sakerna ovan till en egen komponent! */}
                 </Pressable>
               </Link>
             );

@@ -1,21 +1,21 @@
 import { Image, Text, View } from 'react-native';
 
 type ProductItemProps = {
-    title: string,
+    title?: string,
     brand?: string, // Tillverkare, märke, musikband, artist mm...
-    pic: string,
-    thumb: string,
-    shortdesc: string,
+    pic?: string,
+    thumb?: string,
+    shortdesc?: string,
     category: Category,
     size?: Size,
     price?: number,
-    color1?: '#000', // Huvudfärgen, t.ex. svart ('#000')
-    color2?: '#fff', // Färg två, t.ex. vit ('#fff') i det här fallet
+    color1?: string, // Huvudfärgen, t.ex. svart ('#000')
+    color2?: string, // Färg två, t.ex. vit ('#fff') i det här fallet
     pattern?: Pattern, // Om plagget har mönster, vilket?
-    checkin: Date,
+    checkin?: Date,
     sold: false,
     checkoutdate?: Date,
-    store: Store
+    store?: Store
 };
 
 
@@ -28,21 +28,21 @@ export default function ProductItem({title, brand, pic, thumb, shortdesc, catego
 
         <View>
             <View style={{flexDirection: 'row', gap: 5, marginBottom: 80}}>
-                {pic ? <Image id="" source={require('@/assets/images/favicon.png')} /> : null}
-                {thumb ? <Image id="" source={require('@/assets/images/tiny_logo.png')} /> : null}
+                {pic ? <Image source={require(pic)} /> : <Image source={require('@/assets/images/react-logo.png')} />}
+                {thumb ? <Image source={require(thumb)} /> : <Image source={require('@/assets/images/favicon.png')} />}
             </View>
             <Text>{category<5 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) {title} - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
-                ({category ? `${category}` : 'Ingen kategori'}){'\n'}
+                ({category ? `Kategori ${category}` : 'Ingen kategori'}){'\n'}
                 
-                {category<6 && color1 ? `${color1} ` : 'Inga färg vald'}, {category<6 && pattern ? `${pattern}` : 'Inget mönster'}{'\n'}
-                {category<6 && color2 ? `och ${color2}` : null}
+                {category<6 ? `${color1} ` : null}{category<6 ? `- ${pattern}` : null}{'\n'}
+                {category<6 && color1 && color2 ? `${color1} och ${color2}` : null}
                 
                 
-                {price ? `Pris: ${price} (${price / 20} 💚)` : 'PRIS SAKNAS!'}
                 {checkin ? ` - Tillagd ${checkin.toLocaleDateString()}` : '[DATUM SAKNAS!]'}{'\n'}{'\n'}
 
                 {/* Såldes varan eller checkades den helt enkelt ut? Då visas antingen av följande nedan… */}
-                {sold&&checkoutdate ? `Såldes ${checkoutdate.toLocaleDateString()} ` : null}
+                
+                {price ? `Pris: ${price} kr (${price / 20} 💚).` : 'PRIS SAKNAS!'} {sold&&checkoutdate ? `Såldes ${checkoutdate.toLocaleDateString()} ` : null}
                 {!sold&&checkoutdate ? `Togs ur registret ${checkoutdate.toLocaleDateString()} `: null}i butik: {store}
             </Text>
         </View>

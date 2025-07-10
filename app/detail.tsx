@@ -35,19 +35,7 @@ export default function DetailView() {
         </ScrollView> */
         }
         <ScrollView style={{margin: 30, backgroundColor: 'yellow', width: 400, padding: 10}}>
-          <ProductItem title="[Produkt]" pic={require('@/assets/images/favicon.png')}
-            thumb={require('@/assets/images/favicon.png')}
-            //id="dföjlr"
-            pattern={0}
-            size={1}
-            checkin={new Date("2024-04-25")}
-            price={120}
-            shortdesc=""
-            sold={false}
-            checkoutdate={new Date("2024-04-30")}
-            store={1}
-            category={1}
-          />
+          <ProductItem sold={false} category={1} />
         </ScrollView>
         {/* </View> */}
 

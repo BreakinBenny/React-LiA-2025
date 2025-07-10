@@ -43,8 +43,7 @@ export default function Index() {
                       färg, mönster (om applicerbart & definierat), pris, butik...
                     */
                     // console.log('Produkt nummer # vald:', item);
-
-
+                    
                   }}>
                   <View key={item.id}>
                     <View style={{flexDirection: 'row', gap: 5}}>
@@ -54,10 +53,10 @@ export default function Index() {
                     <Text style={{lineHeight: 25}} key={item.id}>
                       {item.title}{item.category<6 && item.brand ? ` (${item.brand})`: null}{'\n'}
 
-                      Tillagd {item.checkin ? `${item.checkin}`: '[DATUM SAKNAS!]'}, {item.sold ? `såldes ${item.checkoutdate} ` : null}i butik: {item.store}
+                      Tillagd {item.checkin ? `${item.checkin}`: '[DATUM SAKNAS!]'}
                     </Text>
                     <Text style={{textAlign: 'right', fontWeight: 'bold', color: 'darkgreen'}}>
-                      {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚)` : `Inget pris satt!`}
+                      {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚).` : `Inget pris satt!`} {item.sold ? `Såldes ${item.checkoutdate} ` : null}i butik: {item.store}
                     </Text>
                   </View>
                 </Pressable>

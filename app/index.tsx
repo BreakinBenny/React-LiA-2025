@@ -39,12 +39,13 @@ export default function Index() {
               <Link href={`\/detail?id=${item.id}`} asChild>
                 <Pressable style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
                   onPress={( item ) => {
+
                     /* I detaljvyn ska vi visa mer information om produkten, t.ex. storlek,
                       färg, mönster (om applicerbart & definierat), pris, butik...
                     */
-                    // console.log('Produkt nummer # vald:', item);
-                    // Varje vara i listan borde helt enkelt öppna en slags Alert som visar ProductItem.
-                    // Använd helst Alert istället för Link om vi är på mobil plattform.
+                    // console.log('Produkten som valdes:', item);
+                    // Varje vara i listan borde helt enkelt öppna en slags Alert som visar ProductItem, men
+                    // använd gärna Alert istället för Link om vi är på mobil plattform.
                     
                   }}>
                   {/* Gör sakerna här till en egen komponent! */}

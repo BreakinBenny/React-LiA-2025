@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Dimensions, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import SearchBar from "./components/SearchBar";
 import ProductItem from "./models/ProductItem";
@@ -8,10 +8,6 @@ const { height, width } = Dimensions.get('window');
 // TODO: Detaljvyn, här visas fler av produktens egenskaper än i huvudskärmen?
 // ?
 export default function DetailView() {
-  const onButtonPress = () => {}
-  const [dummy, dummyState] = useState("");
-  const [text, onChangeText] = React.useState('Useless text... 🔎');
-  const [number, onChangeNumber] = React.useState('');
 
   // <ProductItem key={item.id} image={item.image}>{item.title} /></ProductItem>
 
@@ -35,13 +31,13 @@ export default function DetailView() {
         </ScrollView> */
         }
         <ScrollView style={{margin: 30, backgroundColor: 'yellow', width: 400, padding: 10}}>
-          <ProductItem sold={false} category={1} />
+          <ProductItem />
         </ScrollView>
         {/* </View> */}
 
         <View style={{flexDirection: 'row', margin: 15}}>
-          <Button title="In" color='lightgray' onPress={onButtonPress} />
-          <Button title="Ut" color='#999999' onPress={onButtonPress} />
+          <Button title="In" color='lightgray' />
+          <Button title="Ut" color='#999999' />
         </View>
       </View>
     </SafeAreaView>

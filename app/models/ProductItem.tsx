@@ -7,21 +7,22 @@ type ProductItemProps = {
     pic?: string,
     thumb?: string,
     shortdesc?: string,
-    category: Category,
+    category?: Category,
     size?: Size,
     price?: number,
     color1?: string, // Huvudfärgen, t.ex. svart ('#000')
     color2?: string, // Färg två, t.ex. vit ('#fff') i det här fallet
     pattern?: Pattern, // Om plagget har mönster, vilket?
     checkin?: Date,
-    sold: false,
+    sold?: Boolean,
     checkoutdate?: Date,
     store?: Store
 };
 
-
-export default function ProductItem({id, title, brand, pic, thumb, shortdesc, category,
-    size, pattern, price, color1, color2, checkin, sold, checkoutdate, store}: ProductItemProps) {
+export default function ProductItem({
+    id, title, brand, pic, thumb, shortdesc,
+    category, size, pattern, price, color1, color2,
+    checkin, sold, checkoutdate, store}: ProductItemProps) {
 
     return (
         //TODO: BILDEN måste visas
@@ -31,12 +32,15 @@ export default function ProductItem({id, title, brand, pic, thumb, shortdesc, ca
             <View style={{flexDirection: 'row', gap: 5, marginBottom: 80}}>
                 {!pic ? <Image source={require('@/assets/images/react-logo.png')} /> : <Image source={{ uri: pic }} />}
                 {!thumb ? <Image source={require('@/assets/images/favicon.png')} /> : <Image source={{ uri: thumb }} />}
+                {category && category==6 && title ? <Text>{title}</Text> : null
+                    //Titel om definerat och vi är i kategori 6 och har variabeln definierad
+                }
             </View>
-            <Text>{category<6 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) {title} - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
+            <Text>{category && category<6 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) {title} - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
                 ({category ? `Kategori ${category}` : 'Ingen kategori'}){'\n'}
                 
-                {category<6 ? `${color1} ` : null}{category<6 ? `- ${pattern}` : null}{'\n'}
-                {category<6 && color1 && color2 ? `${color1} och ${color2}` : null}
+                {category && category<6 ? `${color1} ` : null}{category && category<6 ? `- ${pattern}` : null}{'\n'}
+                {category && category<6 && color1 && color2 ? `${color1} och ${color2}` : null}
                 
                 
                 {checkin ? ` - Tillagd ${checkin.toLocaleDateString()}` : '[DATUM SAKNAS!]'}{'\n'}{'\n'}

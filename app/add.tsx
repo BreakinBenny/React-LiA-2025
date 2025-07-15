@@ -1,3 +1,4 @@
+import { Stack } from 'expo-router';
 import { useState } from 'react';
 import { FlatList, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 //import { generate } from "shortid";
@@ -50,6 +51,7 @@ export default function AddView() {
     */
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+          <Stack.Screen options={{ title: "Lägg till produkt(er)" }} />
             <View style={ styles.page }>
               <Text>Lägg till varor härifrån</Text>
               

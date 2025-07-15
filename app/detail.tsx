@@ -1,3 +1,4 @@
+import { Stack } from 'expo-router';
 import React from "react";
 import { Button, Dimensions, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import SearchBar from "./components/SearchBar";
@@ -13,6 +14,7 @@ export default function DetailView() {
 
   return (
     <SafeAreaView>
+      <Stack.Screen options={{ title: "Produktdetaljer" }} />
       <View style={ styles.page }>
         {/* <Text style={ styles.text }>DETALJVY</Text> */}
         <SearchBar />

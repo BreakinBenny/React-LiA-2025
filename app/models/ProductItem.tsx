@@ -13,7 +13,7 @@ type ProductItemProps = {
     color1?: string, // Huvudfärgen, t.ex. svart ('#000')
     color2?: string, // Färg två, t.ex. vit ('#fff') i det här fallet
     pattern?: Pattern, // Om plagget har mönster, vilket?
-    checkin?: Date,
+    checkindate?: Date,
     sold?: Boolean,
     checkoutdate?: Date,
     store?: Store
@@ -22,7 +22,7 @@ type ProductItemProps = {
 export default function ProductItem({
     id, title, brand, pic, thumb, shortdesc,
     category, size, pattern, price, color1, color2,
-    checkin, sold, checkoutdate, store}: ProductItemProps) {
+    checkindate, sold, checkoutdate, store}: ProductItemProps) {
 
     return (
         //TODO: BILDEN måste visas
@@ -43,7 +43,7 @@ export default function ProductItem({
                 {category && category<6 && color1 && color2 ? `${color1} och ${color2}` : null}
                 
                 
-                {checkin ? ` - Tillagd ${checkin.toLocaleDateString()}` : '[DATUM SAKNAS!]'}{'\n'}{'\n'}
+                {checkindate ? ` - Tillagd ${checkindate.toLocaleDateString()}` : '[DATUM SAKNAS!]'}{'\n'}{'\n'}
 
                 {/* Såldes varan eller checkades den helt enkelt ut? Då visas antingen av följande nedan… */}
                 

@@ -5,8 +5,9 @@
         "title": "Pocketbok",
         "brand": "",
         "category": 6,
+        "size": "N/A",
         "store": 2,
-        "checkin": "N/A",
+        "checkindate": "N/A",
         "sold": false,
         "checkoutdate": "N/A",
         "price": 20
@@ -20,7 +21,7 @@
         "size": 3,
         "material": "Polyester",
         "pattern": "Mönster (Blommor i olika färger)",
-        "checkin": "2024-03-28",
+        "checkindate": "2024-03-28",
         "price": 80,
         "store": 2
     },
@@ -34,7 +35,7 @@
         "material": "85% bomull, 8% polyester, 7% ull",
         "color": "Gul",
         "store": 2,
-        "checkin": "2024-04-04",
+        "checkindate": "2024-04-04",
         "price": 120
     },
     {
@@ -48,7 +49,7 @@
         "color": "Svart",
         "store": 2,
         "price": 60,
-        "checkin": "N/A"
+        "checkindate": "N/A"
     }
 
 ]

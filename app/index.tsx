@@ -1,6 +1,6 @@
-import { Link } from 'expo-router';
+import { Stack } from 'expo-router';
 import React, { useState } from "react";
-import { Button, Dimensions, FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Alert, Button, Dimensions, FlatList, Image, Platform, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import SearchBar from "./components/SearchBar";
 import varor from "./models/varor.json"; //Must be moved to be inside the below function in future...
 
@@ -25,47 +25,52 @@ export default function Index() {
 
   return (
     <SafeAreaView>
+      <Stack.Screen options={{ title: "Huvudmeny" }} />
       <View style={ styles.page }>
         {/* <Text style={ styles.text }>HUVUDSKÄRM</Text> */}
         <SearchBar />
 
         {/* LÄGG IN FILTER HÄR… */}
         
+        
 
         {/* <Text style={ styles.text }>FLATLIST</Text> */}
         <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
           data={varor} keyExtractor={item => item.id} renderItem={({ item }) => {
             return (  // Ska alla plagg visa minst två bilder utanför detaljvyn?
-              <Link href={`\/detail?id=${item.id}`} asChild>
-                <Pressable style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
-                  onPress={( item ) => {
+              <View>
+                {/* <Link href={`\/detail?id=${item.id}`} asChild onPress={() => { Platform.OS === 'web' ? console.log('Web link clicked') :
+                  Alert.alert('', '' );
+                }}> */}
 
-                    /* I detaljvyn ska vi visa mer information om produkten, t.ex. storlek,
-                      färg, mönster (om applicerbart & definierat), pris, butik...
-                    */
-                    // console.log('Produkten som valdes:', item);
-                    // Varje vara i listan borde helt enkelt öppna en slags Alert som visar ProductItem, men
-                    // använd gärna Alert istället för Link om vi är på mobil plattform.
-                    
-                  }}>
                   {/* Gör sakerna här till en egen komponent! */}
-                  <View key={item.id}>
-                    <View style={{flexDirection: 'row', gap: 5}}>
-                      {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}
-                      {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}
-                    </View>
-                    <Text style={{lineHeight: 25}} key={item.id}>
-                      {item.title}{item.category<6 && item.brand ? ` (${item.brand})`: null}{'\n'}
+                    <Pressable key={item.id} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
+                    onPress={() => {
+                      {Platform.OS === 'web' ? console.log('Web link clicked') :
+                      Alert.alert('Produktdetaljer', `Storlek: ${item.size}\n\nIncheckningsdatum: ${item.checkindate}\nUtcheckningsdatum: ${item.checkoutdate}`,
+                        [{ text: "Redigera", onPress: () => console.log("Vi redigerar varan...") },
+                          { text: "Radera", onPress: () => console.log("Ska vi radera varan?") },
+                          { text: "OK", onPress: () => console.log("Tryckte på OK...") },
+                        ])
+                      }
+                      }}>
+                      <View style={{flexDirection: 'row', gap: 5}}>
+                        {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}
+                        {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}
+                      </View>
+                      <Text style={{lineHeight: 25}} key={item.id}>
+                        {item.title}{item.category<6 && item.brand ? ` (${item.brand})`: null}{'\n'}
 
-                      Tillagd {item.checkin ? `${item.checkin}`: '[DATUM SAKNAS!]'}
-                    </Text>
-                    <Text style={{textAlign: 'right', fontWeight: 'bold', color: 'darkgreen'}}>
-                      {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚).` : `Inget pris satt!`} {item.sold ? `Såldes ${item.checkoutdate} ` : null}i butik: {item.store}
-                    </Text>
-                  </View>
+                        Tillagd {item.checkindate ? `${item.checkindate}`: '[DATUM SAKNAS!]'}
+                      </Text>
+                      <Text style={{textAlign: 'right', fontWeight: 'bold', color: 'darkgreen'}}>
+                        {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚).` : `Inget pris satt!`} {item.sold ? `Såldes ${item.checkoutdate} ` : null}i butik: {item.store}
+                      </Text>
+                    </Pressable>
                   {/* Gör sakerna ovan till en egen komponent! */}
-                </Pressable>
-              </Link>
+
+                {/*</Link>*/}
+              </View>
             );
           }}
         />

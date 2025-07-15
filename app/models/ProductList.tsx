@@ -25,7 +25,7 @@ export default function ProductList() {
                     <Text style={{lineHeight: 25}} key={item.id}>
                         ({item.size ? `${item.size}`: 'Ingen/Okänd storlek'}) {item.title}{item.brand ? ` (${item.brand})`: null}{'\n'}
 
-                        Tillagd {item.checkin ? `${item.checkin}`: '[DATUM SAKNAS!]'}, {item.sold ? `såldes ${item.checkoutdate} ` : null}i butik: {item.store}
+                        Tillagd {item.checkindate ? `${item.checkindate}`: '[DATUM SAKNAS!]'}, {item.sold ? `såldes ${item.checkoutdate} ` : null}i butik: {item.store}
                     </Text>
                     <Text style={{textAlign: 'right', fontWeight: 'bold', color: 'darkgreen'}}>
                         {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚)` : `Inget pris satt!`}

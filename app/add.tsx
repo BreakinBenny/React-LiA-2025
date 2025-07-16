@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
 import { useState } from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 //import { generate } from "shortid";
 
 
@@ -14,7 +14,7 @@ function ProductForm() {
       //setTitle('');
     }
   }
-
+/*
   return (
     <View>
       <TextInput value={title} onChangeText={setTitle} onSubmitEditing={handleAddProduct}
@@ -38,7 +38,7 @@ function ProductForm() {
       <Text>Produkten är en/ett… {title}</Text>
     </View>
   )
-
+*/
 }
 
 export default function AddView() {
@@ -55,7 +55,7 @@ export default function AddView() {
             <View style={ styles.page }>
               <Text>Lägg till varor härifrån</Text>
               
-              <ProductForm />
+              {/* <ProductForm /> */}
             </View>
         </SafeAreaView>
     );

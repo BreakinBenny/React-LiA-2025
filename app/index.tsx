@@ -47,11 +47,11 @@ export default function Index() {
                     <Pressable key={item.id} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
                     onPress={() => {
                       {Platform.OS === 'web' ? console.log('Web link clicked') :
-                      Alert.alert('Produktdetaljer', `Storlek: ${item.size}\n\nIncheckningsdatum: ${item.checkindate}\nUtcheckningsdatum: ${item.checkoutdate}`,
-                        [{ text: "Redigera", onPress: () => console.log("Vi redigerar varan...") },
-                          { text: "Radera", onPress: () => console.log("Ska vi radera varan?") },
-                          { text: "OK", onPress: () => console.log("Tryckte på OK...") },
-                        ])
+                      Alert.alert('Produktdetaljer', `Storlek: ${item.size}\n\nIncheckningsdatum: ${item.checkindate}\nUtcheckningsdatum: ${item.checkoutdate}\n\n\n\n\n\n\n\n\n\n`,
+                        [{ text: "Radera", style: 'destructive', onPress: () => console.log("Ska vi radera varan?") },
+                          { text: "Redigera", onPress: () => console.log("Vi redigerar varan...") },
+                          { text: "OK", isPreferred: true, onPress: () => console.log("Tryckte på OK...") }
+                        ], {cancelable: true})
                       }
                       }}>
                       <View style={{flexDirection: 'row', gap: 5}}>

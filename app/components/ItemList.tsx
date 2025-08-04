@@ -1,0 +1,42 @@
+import { FlatList, Image, Pressable, Text, View } from "react-native";
+import varor from "../models/varor.json";
+
+export default function ItemList() {
+    return (
+        <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
+        data={varor} keyExtractor={item => item.id} renderItem={({ item }) => {
+            return (
+            <View>
+                <Pressable key={item.id} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
+                onPress={() => {
+                    {/*Platform.OS === 'web' ? console.log('Webblänk för vara klickad på.') : Alert.alert('Produktdetaljer', `Storlek: ${item.size}\n\n
+                        
+                        Incheckningsdatum: ${item.checkindate}\nUtcheckningsdatum: ${item.checkoutdate}\n\n\n\n\n\n\n\n\n\n`,
+                        [{ text: "Radera", style: 'destructive', onPress: () => console.log("Ska vi radera varan?") },
+                        { text: "Redigera", onPress: () => console.log("Vi redigerar varan...") },
+                        { text: "OK", isPreferred: true, onPress: () => console.log("Tryckte på OK...") }
+                        ], {cancelable: true})
+                    */}
+
+                }}>
+                    <View style={{flexDirection: 'row', gap: 5}}>
+                        {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}
+                        {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}
+                    </View>
+                    <Text style={{lineHeight: 25}} key={item.id}>
+                        {item.title}{item.category<6 && item.brand ? ` (${item.brand})`: null}{'\n'}
+                        
+                        Tillagd {item.checkindate ? `${item.checkindate}`: '[DATUM SAKNAS!]'}
+                    </Text>
+                    <Text style={{textAlign: 'right', fontWeight: 'bold', color: 'darkgreen'}}>
+                        {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚).` : `Inget pris satt!`} {item.sold ? `Såldes ${item.checkoutdate} ` : null}i butik: {item.store}
+                    </Text>
+                </Pressable>
+
+                {/* Link */}
+            </View>
+            );
+        }}
+        />
+    )
+}

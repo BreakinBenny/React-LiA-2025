@@ -13,7 +13,7 @@ export default function App() {
       <View style={ styles.page }>
 
         <Image style={styles.picStyle} source={require('@/assets/images/tiny_logo.png')} />
-        <Text style={ styles.text }>Skitäckligt, Johan Larsson!</Text>
+        <Text style={ styles.text }>Hej, Johan Larsson!</Text>
         <Text style={ [styles.text, styles.selectedText] }>TEXT med både text och selectedText-styles</Text>
         <ActivityIndicator size="large" color="#61DBFB" />
 

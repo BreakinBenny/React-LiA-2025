@@ -1,23 +1,19 @@
-import { Stack } from 'expo-router';
 import React from "react";
 import { Button, Dimensions, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
-import SearchBar from "./components/SearchBar";
-import { ProductItem } from "./models/ProductItem";
+import ProductItem from "./models/ProductItem";
 
 const { height, width } = Dimensions.get('window');
 
 // TODO: Detaljvyn, här visas fler av produktens egenskaper än i huvudskärmen?
 // ?
-export function DetailView() {
+export default function DetailMenu({ navigation } : any) {
 
   // <ProductItem key={item.id} image={item.image}>{item.title} /></ProductItem>
 
   return (
     <SafeAreaView>
-      <Stack.Screen options={{ title: "Produktdetaljer" }} />
       <View style={ styles.page }>
         {/* <Text style={ styles.text }>DETALJVY</Text> */}
-        <SearchBar />
 
         {/* <View style={{flexDirection: 'row', margin: 10}}>
         <ScrollView style={{margin: 30, backgroundColor: 'lightgray', width: 500, padding: 10}}>

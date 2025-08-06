@@ -1,7 +1,7 @@
 import { FlatList, Image, Pressable, Text, View } from "react-native";
 import varor from "../models/varor.json";
 
-export default function ItemList() {
+export default function ItemList({ navigation } : any) {
     return (
         <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
         data={varor} keyExtractor={item => item.id} renderItem={({ item }) => {
@@ -17,7 +17,7 @@ export default function ItemList() {
                         { text: "OK", isPreferred: true, onPress: () => console.log("Tryckte på OK...") }
                         ], {cancelable: true})
                     */}
-
+                    navigation.navigate('Detailmeny', { item })
                 }}>
                     <View style={{flexDirection: 'row', gap: 5}}>
                         {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}

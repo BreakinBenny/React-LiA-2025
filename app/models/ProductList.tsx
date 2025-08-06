@@ -1,19 +1,19 @@
-import { Link } from "expo-router";
+//import { Link } from "expo-router";
 import { FlatList, Image, Pressable, Text, View } from "react-native";
 import varor from "./varor.json"; //Must be moved to be inside the below function in future...
 
 export default function ProductList() {
     <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 500, padding: 10}}
     data={varor} renderItem={({ item }) => {
-        return (  // Ska alla plagg visa minst två bilder utanför detaljvyn?
-            <Link href="/detail" asChild>
+        return (
+            // Ska alla plagg visa minst två bilder utanför detaljvyn?
+            //<Link href="/detail" asChild>
                 <Pressable style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
                     onPress={( item ) => {
                     /* I detaljvyn ska vi visa mer information om produkten, t.ex. storlek,
                       färg, mönster (om applicerbart & definierat), pris, butik...
                     */
                     // console.log('Produkt nummer # vald:', item);
-
 
                     }}>
                     <View key={item.id}>
@@ -31,7 +31,7 @@ export default function ProductList() {
                         {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚)` : `Inget pris satt!`}
                     </Text>
                 </Pressable>
-            </Link>
+            //</Link>
         );
     }}
     />

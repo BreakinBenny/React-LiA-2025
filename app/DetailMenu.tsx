@@ -6,7 +6,7 @@ const { height, width } = Dimensions.get('window');
 
 // TODO: Detaljvyn, här visas fler av produktens egenskaper än i huvudskärmen?
 // ?
-export default function DetailMenu({ navigation } : any) {
+export default function DetailMenu({ route }: any) {
 
   // <ProductItem key={item.id} image={item.image}>{item.title} /></ProductItem>
 
@@ -26,10 +26,15 @@ export default function DetailMenu({ navigation } : any) {
           <Text style={{lineHeight: 20, padding: 30}}>VARA MED MER BESKRIVNING ÄN PÅ HUVUDSKÄRMEN{'\n'}{'\n'}{'\n'}
             I lager på: CAROLI, (och/eller) KRONPRINSEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}
           </Text>
-        </ScrollView> */
-        }
+        </ScrollView> */}
+
         <ScrollView style={{margin: 30, backgroundColor: 'yellow', width: 400, padding: 10}}>
-          <ProductItem />
+          <ProductItem category={route.params.category} pic={route.params.pic}
+          thumb={route.params.thumb} title={route.params.title} price={route.params.price}
+          color1={route.params.color1} color2={route.params.color2} sold={route.params.sold}
+          size={route.params.size} pattern={route.params.pattern} store={route.params.store}
+          checkindate={route.params.checkindate} checkoutdate={route.params.checkoutdate}
+          />
         </ScrollView>
         {/* </View> */}
 

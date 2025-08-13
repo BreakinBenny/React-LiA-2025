@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Dimensions, SafeAreaView, StyleSheet, View } from "react-native";
 import ItemList from "./components/ItemList";
-import { SearchBar } from "./components/SearchBar";
+import SearchBar from "./components/SearchBar";
 
 export default function MainMenu({ navigation } : any) {
   const [hideSold, setHideSold] = useState(false);

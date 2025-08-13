@@ -32,23 +32,25 @@ export default function ProductItem({
             <View style={{flexDirection: 'row', gap: 5, marginBottom: 80}}>
                 {!pic ? <Image source={require('@/assets/images/react-logo.png')} /> : <Image source={{ uri: pic }} />}
                 {!thumb ? <Image source={require('@/assets/images/favicon.png')} /> : <Image source={{ uri: thumb }} />}
-                {category && category==6 && title ? <Text>{title}</Text> : null
+            </View>
+            <View style={{flexDirection: 'column'}}>
+                {category && category==6 && title ? <Text style={{fontSize: 24, fontStyle: 'italic'}}>{title}</Text> : null
                     //Titel om definerat och vi är i kategori 6 och har variabeln definierad
                 }
             </View>
-            <Text>{category && category<6 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) {title} - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
+            <Text>{category && category!=6 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
                 ({category ? `Kategori ${category}` : 'Ingen kategori'}){'\n'}
                 
-                {category && category<6 ? `${color1} ` : null}{category && category<6 ? `- ${pattern}` : null}{'\n'}
+                {category && category<6 ? `${color1} ` : null}{category && category==6 ? null : `- ${pattern}`}{'\n'}
                 {category && category<6 && color1 && color2 ? `${color1} och ${color2}` : null}
                 
                 
-                {checkindate ? ` - Tillagd ${checkindate.toLocaleDateString()}` : '[DATUM SAKNAS!]'}{'\n'}{'\n'}
+                {checkindate ? `Tillagd ${checkindate}` : '[DATUM SAKNAS!]'}{'\n'}{'\n'}
 
                 {/* Såldes varan eller checkades den helt enkelt ut? Då visas antingen av följande nedan… */}
                 
-                {price ? `Pris: ${price} kr (${price / 20} 💚).` : 'PRIS SAKNAS!'} {sold&&checkoutdate ? `Såldes ${checkoutdate.toLocaleDateString()} ` : null}
-                {!sold&&checkoutdate ? `Togs ur registret ${checkoutdate.toLocaleDateString()} `: null}i butik: {store}
+                {price ? `Pris: ${price} kr (${price / 20} 💚).` : 'PRIS SAKNAS!'} {sold&&checkoutdate ? `Såldes ${checkoutdate} ` : null}
+                {!sold&&checkoutdate ? `Togs ur registret ${checkoutdate} `: null}i butik: {store}
             </Text>
         </View>
     );

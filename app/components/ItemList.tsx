@@ -17,7 +17,19 @@ export default function ItemList({ navigation } : any) {
                         { text: "OK", isPreferred: true, onPress: () => console.log("Tryckte på OK...") }
                         ], {cancelable: true})
                     */}
-                    navigation.navigate('Detailmeny', { item })
+                    navigation.navigate('Detailmeny', {
+                        category: item.category, price: item.price,
+                        checkindate: item.checkindate,
+                        checkoutdate: item.checkoutdate,
+                        sold: item.sold, store: item.store,
+                        brand: item.brand, size: item.size,
+                        pattern: item.pattern,
+                        color1: item.color1, color2: item.color2,
+                        title: item.title, /*pic: item.pic, thumb: item.thumb*/
+                    })
+                    {/* brand, pic, thumb, shortdesc,
+    category, size, pattern, price, color1, color2,
+    checkindate, sold, checkoutdate, store */}
                 }}>
                     <View style={{flexDirection: 'row', gap: 5}}>
                         {!item.image ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.image }} />}

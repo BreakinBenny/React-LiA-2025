@@ -6,10 +6,11 @@
         "brand": "",
         "category": 6,
         "size": "N/A",
+        "pattern": "",
         "store": 2,
-        "checkindate": "N/A",
+        "checkindate": "",
         "sold": false,
-        "checkoutdate": "N/A",
+        "checkoutdate": "",
         "price": 20
     },
     {
@@ -20,8 +21,10 @@
         "brand": "",
         "size": 3,
         "material": "Polyester",
+        "color1": "Flerfärgad",
         "pattern": "Mönster (Blommor i olika färger)",
         "checkindate": "2024-03-28",
+        "checkoutdate": "",
         "price": 80,
         "store": 2
     },
@@ -33,9 +36,12 @@
         "brand": "",
         "size": 2,
         "material": "85% bomull, 8% polyester, 7% ull",
-        "color": "Gul",
+        "color1": "Gul",
+        "color2": "",
+        "pattern": "Inget mönster",
         "store": 2,
         "checkindate": "2024-04-04",
+        "checkoutdate": "",
         "price": 120
     },
     {
@@ -46,10 +52,12 @@
         "category": 2,
         "size": 1,
         "material": "Bomull(?)",
-        "color": "Svart",
+        "color1": "Svart",
+        "color2": "",
         "store": 2,
         "price": 60,
-        "checkindate": "N/A"
+        "checkindate": "2024-04-04",
+        "checkoutdate": ""
     }
 
 ]

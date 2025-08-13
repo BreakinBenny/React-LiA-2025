@@ -54,6 +54,7 @@
         "material": "Bomull(?)",
         "color1": "Svart",
         "color2": "",
+        "pattern":"Inget mönster",
         "store": 2,
         "price": 60,
         "checkindate": "2024-04-04",

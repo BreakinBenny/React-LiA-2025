@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-//import { generate } from "shortid";
+import AddItemForm from './components/AddItemForm';
 
 function ProductForm() {
   const [title, setTitle] = useState('');
@@ -27,7 +27,8 @@ export default function AddItemMenu({ navigation } : any) {
             <View style={ styles.page }>
               <Text>Lägg till varor härifrån</Text>
               
-              {/* <ProductForm /> */}
+              <AddItemForm />
+
             </View>
         </SafeAreaView>
     );
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 20,
     maxHeight: 600,
-    backgroundColor: "#00BB00",
+    backgroundColor: "#77EE77",
     justifyContent: "center",
     alignItems: "center"
   }

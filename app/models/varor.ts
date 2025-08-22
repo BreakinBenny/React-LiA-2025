@@ -1,4 +1,4 @@
-[
+export let varor = [
     {
         "id": "skitäckligt",
         "image": "",

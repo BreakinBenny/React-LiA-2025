@@ -1,7 +1,9 @@
 import { FlatList, Image, Pressable, Text, View } from "react-native";
-import varor from "../models/varor.json";
+import { varor } from "../models/varor";
+//import { useState } from "react";
 
 export default function ItemList({ navigation } : any) {
+
     return (
         <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
         data={varor} keyExtractor={item => item.id} renderItem={({ item }) => {

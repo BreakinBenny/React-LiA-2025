@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import React, { useId, useState } from 'react';
 import { Alert, Button, SafeAreaView, Text, TextInput, View } from 'react-native';
 import { varor } from '../models/varor';
 
@@ -15,15 +15,26 @@ export default function AddItemForm() {
     let sold: false;
     let checkoutdate = "";
     let price = 0;
+
+    const [submittedItem, setSubmittedItem] = useState([]);
     const uniqueId = useId();
     const handleSubmit = () => {
-        
+        if(category && size && store && checkindate && price) 
+            setSubmittedItem([...submittedItem ]);
     }
-    varor.map((vara) => console.log(vara.id, vara.title, vara.category));
+    varor.map((vara) => console.log(`${vara.id}: ${vara.title}, ${vara.category}`));
 
     return (
         <SafeAreaView><View>
             <Button title="Hur många varor?" onPress={() => console.log(`${varor.length} varor finns i listan.`)} />
+            { varor.map((varor) => (
+                <li style={{flex: 0.25}} key={varor.id}>
+                    {varor.category}, {varor.category == 6 ? `${varor.title}` : null}
+                    {varor.category != 6 ? `${varor.brand}, ${varor.size}, ${varor.pattern}` : null}
+                </li>
+            ))
+            }
+
             <Button title="Generera ID" onPress={(uniqueId) => console.log('Genererar ID för varan.')} />
             
             <Text style={{padding: 20}}>1: Topp{'\n'}2: Byxor{'\n'}3: Skor{'\n'}4: Headwear{'\n'}5: Accessoarer{'\n'}6: Annat</Text>
@@ -45,7 +56,7 @@ export default function AddItemForm() {
                 }}
             />
 
-            <Button title="Lägg till vara" onPress={() => console.log('Lägger till varan i listan...')} />
+            <Button title="Lägg till vara" onPress={(handleSubmit) => console.log('Lägger till varan i listan...')} />
         </View></SafeAreaView>
     );
 }

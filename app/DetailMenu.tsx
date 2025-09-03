@@ -13,21 +13,6 @@ export default function DetailMenu({ route }: any) {
   return (
     <SafeAreaView>
       <View style={ styles.page }>
-        {/* <Text style={ styles.text }>DETALJVY</Text> */}
-
-        {/* <View style={{flexDirection: 'row', margin: 10}}>
-        <ScrollView style={{margin: 30, backgroundColor: 'lightgray', width: 500, padding: 10}}>
-          <View style={{flexDirection: 'row', gap: 10}}>
-            <Image source={require('@/assets/images/favicon.png')} />
-            <Image source={require('@/assets/images/tiny_logo.png')} />
-            <Text>PRODUKT (TRÖJA, BYXOR, SKOR, MÖSSA...)</Text>
-          </View>
-
-          <Text style={{lineHeight: 20, padding: 30}}>VARA MED MER BESKRIVNING ÄN PÅ HUVUDSKÄRMEN{'\n'}{'\n'}{'\n'}
-            I lager på: CAROLI, (och/eller) KRONPRINSEN{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}{'\n'}
-          </Text>
-        </ScrollView> */}
-
         <ScrollView style={{margin: 30, backgroundColor: 'yellow', width: 400, padding: 10}}>
           <ProductItem category={route.params.category} pic={route.params.pic}
           thumb={route.params.thumb} title={route.params.title} price={route.params.price}
@@ -36,7 +21,6 @@ export default function DetailMenu({ route }: any) {
           checkindate={route.params.checkindate} checkoutdate={route.params.checkoutdate}
           />
         </ScrollView>
-        {/* </View> */}
 
         <View style={{flexDirection: 'row', margin: 15}}>
           <Button title="In" color='lightgray' />
@@ -56,7 +40,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 22, maxWidth: 400,
     color: "white",
-    margin: 0,
     padding: 5
   },
   selectedText: {

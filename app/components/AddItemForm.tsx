@@ -1,66 +1,49 @@
 import React, { useId, useState } from 'react';
-import { Alert, Button, SafeAreaView, TextInput, View } from 'react-native';
+import { Button, SafeAreaView, TextInput, View } from 'react-native';
 import { varor } from '../models/varor';
 
-varor.map((vara) => console.log(`${vara.id}: ${vara.title}, ${vara.category}`));
-
 export default function AddItemForm() {
-    //let uniqueId = "";
-    let category = 0;
-    let image = "";
-    let title = "";
-    let brand = "";
-    let size = "";
-    let pattern = "";
-    let store = 0;
-    let checkindate = "";
-    let sold: false;
-    let checkoutdate = "";
-    let price = 0;
+    //type SubmittedItem = { itemCategory: number; /*itemMediaTitle?: string; */itemStore: number; itemPrice: number; };
 
-    type SubmittedItem = { itemCategory: number; /*itemMediaTitle?: string; */itemStore: number; itemPrice: number; };
-    const [submittedItems, setSubmittedItems] = useState<SubmittedItem[]>([]);
-    const [itemCategory, setItemCategory] = useState(0);
-    const [itemStore, setItemStore] = useState(0);
-    const [itemPrice, setItemPrice] = useState(0);
+    //const [submittedItems, setSubmittedItems] = useState<Product[]>([]);
+    const [itemCategory, setItemCategory] = useState<number | null>(null);
+    const [itemStore, setItemStore] = useState<number | null>(null);
+    const [itemPrice, setItemPrice] = useState<number | null>(null);
+    const [itemTitle, setItemTitle] = useState<string | null>(null);
     //const [itemMediaTitle, setItemMediaTitle] = useState("");
     const uniqueId = useId();
-    const handleSubmit = () => {
-        if(!itemCategory || !itemStore || !itemPrice) {
-            Alert.alert('Egenskap(er) utelämnade!', 'Det saknas antingen giltigt kategori, lokal som varan finns i eller riktigt pris på varan. Vill du fortsätta?',
-            [
-                {text: 'Ja', onPress: () => {
-                    console.log('Fortsatte utan att alla variabler var ifyllda.');
-                }},
-                {text: 'Nej', style: 'cancel', isPreferred: true, onPress: () => {
-                    console.log('Avbröt kategorival.');
-                    return;
-                }}
-            ]);
-            console.log('Alla egenskaper (och titeln om varan är media) måste vara ifyllda för att lägga till en vara!');
-            return;
-        }
 
-        console.log(`Lägger till varan (kategori ${itemCategory}, butik ${itemStore}, pris ${itemPrice} SEK (${itemPrice / 20} 💚)) i listan...`)
-        setSubmittedItems([...submittedItems, { itemCategory, /*itemMediaTitle,*/ itemStore, itemPrice }]);
-        setItemCategory(0); setItemStore(0); setItemPrice(0);
+    const handleSubmit = () => {
+        if(itemCategory && itemStore && itemPrice) {
+            varor.push({
+                category: itemCategory, store: itemStore, price: itemPrice, id: uniqueId,
+                title: itemTitle || "Ingen titel", image: "", brand: "", size: "", pattern: "",
+                checkindate: new Date().toISOString().split('T')[0], sold: false, checkoutdate: "" });
+            
+            //setSubmittedItems([...submittedItems, { category, /*itemMediaTitle,*/ store, price }]);
+            setItemCategory(0); setItemTitle(''); setItemStore(0); setItemPrice(0);
+        }
     }
 
 
     return (
         <SafeAreaView><View>
-            <Button title="Hur många varor?" onPress={() => {
-                console.log(`${varor.length} varor finns i listan, och ${submittedItems.length} varor i useState-varulistan.`)
-            }} />
-            { varor.map((varor) => (
+            {/* varor.map((varor) => (
                 <li style={{padding: 5}} key={varor.id}>
                     {varor.category}, {varor.category == 6 ? `${varor.title}` : null}
                     {varor.category != 6 ? `${varor.brand}, ${varor.size}, ${varor.pattern}` : null}
                 </li>
-            )) }
+            )) */}
 
             {/* <Button title="Generera ID" onPress={(uniqueId) => console.log('Genererar ID för varan.')} /> */}
-
+            
+            <TextInput style={{ height: 40, width: 340, backgroundColor: 'white', marginBottom: 10, paddingLeft: 8 }}
+                placeholder="Vad är varans titel?"
+                onChangeText={text => setItemTitle(text)}
+                value={itemTitle?.toString()}
+                inputMode="text"
+                returnKeyType="done"
+            />
             <label>Kategori:
                 <select name="itemCategory" defaultValue="0" onChange={e => setItemCategory(Number(e.target.value))}>
                     <option value="0" disabled>(Välj kategori)</option>
@@ -84,22 +67,25 @@ export default function AddItemForm() {
                 </select>
             </label>
             
-            { submittedItems.map((item, index) => (
+            { /*varor.map((item, index) => (
                 <li style={{margin: 5}} key={index}>
-                    Kategori: {item.itemCategory}, Butik: {item.itemStore}, Pris: {item.itemPrice} SEK
+                    Kategori: {item.category}, Butik: {item.store}, Pris: {item.price} SEK
                 </li>
-            )) }
+            )) */}
 
-            <TextInput style={{ height: 100, width: 340, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingLeft: 8 }}
-                placeholder="Vad är varans pris??"
-                placeholderTextColor={"red"}
+            <TextInput style={{ height: 50, width: 340, backgroundColor: 'white', marginBottom: 10, paddingLeft: 8 }}
+                placeholder="Vad är varans pris?"
                 onChangeText={text => setItemPrice(Number(text))}
-                value={itemPrice.toString()}
+                value={itemPrice?.toString()}
                 inputMode="numeric"
                 returnKeyType="done"
             />
 
-            <Button title="Lägg till vara" onPress={handleSubmit} />
+            <Button
+                title={itemCategory && itemStore && itemPrice ? "Lägg till vara" : "Alla egenskaper måste vara ifyllda"}
+                disabled={itemCategory && itemStore && itemPrice ? false : true}
+                onPress={handleSubmit}
+            />
         </View></SafeAreaView>
     );
 }

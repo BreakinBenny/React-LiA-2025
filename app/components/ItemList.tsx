@@ -2,6 +2,9 @@ import { FlatList, Image, Pressable, Text, View } from "react-native";
 import { varor } from "../models/varor";
 //import { useState } from "react";
 
+
+console.log(`${varor.length} varor finns i listan.`);
+
 export default function ItemList({ navigation } : any) {
 
     return (

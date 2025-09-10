@@ -1,3 +1,21 @@
+export type Product = {
+    id: string;
+    image: string;
+    title: string;
+    brand: string;
+    category: number;
+    size: string | number;
+    pattern: string;
+    store: number;
+    checkindate?: string;
+    sold: boolean;
+    checkoutdate: string;
+    price: number;
+    material?: string;
+    color1?: string;
+    color2?: string;
+}
+
 export let varor = [
     {
         "id": "skitäckligt",

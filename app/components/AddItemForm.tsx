@@ -1,8 +1,8 @@
 import React, { useId, useState } from 'react';
-import { Button, SafeAreaView, TextInput, View } from 'react-native';
+import { Alert, Button, Platform, SafeAreaView, TextInput, View } from 'react-native';
 import { varor } from '../models/varor';
 
-export default function AddItemForm() {
+export default function AddItemForm({ navigation } : any) {
     //type SubmittedItem = { itemCategory: number; /*itemMediaTitle?: string; */itemStore: number; itemPrice: number; };
 
     //const [submittedItems, setSubmittedItems] = useState<Product[]>([]);
@@ -19,6 +19,12 @@ export default function AddItemForm() {
                 category: itemCategory, store: itemStore, price: itemPrice, id: uniqueId,
                 title: itemTitle || "Ingen titel", image: "", brand: "", size: "", pattern: "",
                 checkindate: new Date().toISOString().split('T')[0], sold: false, checkoutdate: "" });
+                Platform.OS === 'web' ? console.log(
+                    `Lade till vara: Kategori ${itemCategory}, Butik ${itemStore}, Pris ${itemPrice} SEK, ID ${uniqueId}`
+                ) : Alert.alert('Vi har lagt till varan i registret.', '',
+                    [{ text: 'OK', onPress: () => navigation.navigate('Huvudmeny') },
+                        { text: 'Lägg till en till' }
+                    ]);
             
             //setSubmittedItems([...submittedItems, { category, /*itemMediaTitle,*/ store, price }]);
             setItemCategory(0); setItemTitle(''); setItemStore(0); setItemPrice(0);

@@ -1,5 +1,7 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useId, useState } from 'react';
 import { Alert, Button, Platform, SafeAreaView, TextInput, View } from 'react-native';
+
 import { varor } from '../models/varor';
 
 export default function AddItemForm({ navigation } : any) {
@@ -13,7 +15,14 @@ export default function AddItemForm({ navigation } : any) {
     //const [itemMediaTitle, setItemMediaTitle] = useState("");
     const uniqueId = useId();
 
-    const handleSubmit = () => {
+    const handleSubmit = async (value) => {
+        try {
+            const jsonValue = JSON.stringify(value);
+            await AsyncStorage.setItem('varor', jsonValue);
+        }
+        catch (e) {
+            console.log('Kunde inte spara varan.', e);
+        }
         if(itemCategory && itemStore && itemPrice) {
             varor.push({
                 category: itemCategory, store: itemStore, price: itemPrice, id: uniqueId,

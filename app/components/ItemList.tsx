@@ -1,8 +1,17 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FlatList, Image, Pressable, Text, View } from "react-native";
 import { varor } from "../models/varor";
 //import { useState } from "react";
 
-
+const loadItems = async () => {
+    try {
+        const jsonValue = await AsyncStorage.getItem('varor');
+        //return jsonValue != null ? JSON.parse(jsonValue) : [];
+    } catch(e) {
+        console.log('Kunde inte läsa varorna.', e);
+        return [];
+    }
+}
 console.log(`${varor.length} varor finns i listan.`);
 
 export default function ItemList({ navigation } : any) {

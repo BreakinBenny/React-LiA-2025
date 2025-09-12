@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Dimensions, SafeAreaView, StyleSheet, View } from "react-native";
 import ItemList from "./components/ItemList";
 import SearchBar from "./components/SearchBar";
+import { Product, varor } from "./models/varor";
 
 export default function MainMenu({ navigation } : any) {
   const [hideSold, setHideSold] = useState(false);
@@ -11,13 +12,29 @@ export default function MainMenu({ navigation } : any) {
     setHideSold(newHideSold);
   }
 
+  const [products, setProducts] = useState<Product[]>([]);
   // <ProductItem key={item.id} image={item.image}>{item.title} /></ProductItem>
+
+  function addProduct(product: Product) {
+    setProducts([...products, product]);
+  }
+
+  useEffect(() => {
+    // TODO: Make request to backend to fetch products
+    // For now, we use the static varor array
+    setProducts(varor);
+  }, [])
+
+  useEffect(() => {
+
+    
+  }, [products])
 
     return (
         <SafeAreaView>
           <View style={ styles.page }>
             {/* <Text style={ styles.text }>HUVUDSKÄRM</Text> */}
-            <SearchBar navigation={navigation} />
+            <SearchBar navigation={navigation} addProduct={addProduct} />
     
             {/* LÄGG IN FILTER HÄR… */}
             

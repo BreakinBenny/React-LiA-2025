@@ -7,9 +7,6 @@ const { height, width } = Dimensions.get('window');
 // TODO: Detaljvyn, här visas fler av produktens egenskaper än i huvudskärmen?
 // ?
 export default function DetailMenu({ route }: any) {
-
-  // <ProductItem key={item.id} image={item.image}>{item.title} /></ProductItem>
-
   return (
     <SafeAreaView>
       <View style={ styles.page }>
@@ -42,28 +39,9 @@ const styles = StyleSheet.create({
     color: "white",
     padding: 5
   },
-  selectedText: {
-    backgroundColor: "orange",
-    color: "black"
-  },
-  otherstyle: {
-    flex: 1,
-    justifyContent: "space-around",
-    alignItems: "flex-start",
-    backgroundColor: "#777"
-  },
   picStyle: {
     resizeMode: "center",
     width: Dimensions.get("window").width -50, height: 100,
     flex: 1
-  },
-  flexstuff: {
-    flex: 1, fontSize: 25,
-    color: "azure",
-    margin: 20,
-    padding: 10,
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
   }
 });

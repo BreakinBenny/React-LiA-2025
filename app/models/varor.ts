@@ -16,7 +16,7 @@ export type Product = {
     color2?: string;
 }
 
-export let varor = [
+export let varor: Product[] = [
     {
         "id": "skitäckligt",
         "image": "",
@@ -43,6 +43,7 @@ export let varor = [
         "pattern": "Mönster (Blommor i olika färger)",
         "checkindate": "2024-03-28",
         "checkoutdate": "",
+        "sold": false,
         "price": 80,
         "store": 2
     },
@@ -58,6 +59,7 @@ export let varor = [
         "color2": "",
         "pattern": "Inget mönster",
         "store": 2,
+        "sold": false,
         "checkindate": "2024-04-04",
         "checkoutdate": "",
         "price": 120
@@ -74,6 +76,7 @@ export let varor = [
         "color2": "",
         "pattern":"Inget mönster",
         "store": 2,
+        "sold": false,
         "price": 60,
         "checkindate": "2024-04-04",
         "checkoutdate": ""

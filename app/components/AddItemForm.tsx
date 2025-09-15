@@ -1,8 +1,8 @@
 //import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useId, useState } from 'react';
-import { Alert, Button, Platform, SafeAreaView, TextInput, View } from 'react-native';
+import { Alert, Button, Platform, TextInput, View } from 'react-native';
 
-import { varor } from '../models/varor';
+import { /*Product,*/ varor } from '../models/varor';
 
 export default function AddItemForm({ navigation } : any) {
     const [itemCategory, setItemCategory] = useState<number | null>(null);
@@ -20,18 +20,18 @@ export default function AddItemForm({ navigation } : any) {
                 Platform.OS === 'web' ? console.log(
                 `Lade till vara: Kategori ${itemCategory}, Butik ${itemStore}, Pris ${itemPrice} SEK, ID ${uniqueId}`) : Alert.alert(
                     'Vi har lagt till varan i registret.', '',
-                    [{ text: 'OK', onPress: () => navigation.navigate('Huvudmeny') },
+                    [{ text: 'OK', onPress: () => navigation.goBack() },
                         { text: 'Lägg till en till' }
                     ]);
             
             //setSubmittedItems([...submittedItems, { category, /*itemMediaTitle,*/ store, price }]);
             setItemCategory(0); setItemTitle(''); setItemStore(0); setItemPrice(0);
-            navigation.navigate('Huvudmeny');
+            navigation.goBack();
         }
     }
 
     return (
-        <SafeAreaView><View>
+        <View>
             {/* <Button title="Generera ID" onPress={(uniqueId) => console.log('Genererar ID för varan.')} /> */}
             
             <TextInput style={{ height: 40, width: 340, backgroundColor: 'white', marginBottom: 10, paddingLeft: 8 }}
@@ -69,11 +69,10 @@ export default function AddItemForm({ navigation } : any) {
                 returnKeyType="done"
             />
 
-            <Button
-                title={itemCategory && itemStore && itemPrice ? "Lägg till vara" : "Alla egenskaper måste vara ifyllda"}
+            <Button title={itemCategory && itemStore && itemPrice ? "Lägg till vara" : "Alla egenskaper måste vara ifyllda"}
                 disabled={itemCategory && itemStore && itemPrice ? false : true}
                 onPress={handleSubmit}
             />
-        </View></SafeAreaView>
+        </View>
     );
 }

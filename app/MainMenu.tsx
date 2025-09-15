@@ -22,11 +22,13 @@ export default function MainMenu({ navigation } : any) {
   useEffect(() => {
     // TODO: Make request to backend to fetch products
     // For now, we use the static varor array
+    if(varor.length) return;
+    //loadProducts();
     setProducts(varor);
   }, [])
 
   useEffect(() => {
-
+    
     
   }, [products])
 

@@ -11,9 +11,9 @@ const Stack = createNativeStackNavigator();
 export default function Index() {
   
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerTransparent: true }}>
       <Stack.Screen name="Huvudmeny" component={MainMenu} />
-      <Stack.Screen name="Detailmeny" component={DetailMenu} />
+      <Stack.Screen name="Detailmeny" component={DetailMenu} options={{headerTransparent: false}} />
       <Stack.Screen name="Lägg till produkt" component={AddItemMenu} />
     </Stack.Navigator>
   );

@@ -18,6 +18,9 @@ export default function MainMenu({ navigation } : any) {
   function addProduct(product: Product) {
     setProducts([...products, product]);
   }
+  function deleteProduct(product: Product) {
+    
+  }
 
   useEffect(() => {
     // TODO: Make request to backend to fetch products
@@ -41,7 +44,7 @@ export default function MainMenu({ navigation } : any) {
             {/* LÄGG IN FILTER HÄR… */}
             
             {/* <Text style={ styles.text }>FLATLIST</Text> */}
-            <ItemList navigation={navigation} />
+            <ItemList navigation={navigation} deleteProduct={deleteProduct} />
     
             {/* <ProductList /> */}
     

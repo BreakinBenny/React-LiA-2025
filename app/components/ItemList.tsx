@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FlatList, Image, Pressable, Text, View } from "react-native";
-import { /*Product,*/ varor } from "../models/varor";
+import { Product, varor } from "../models/varor";
 
 const loadItems = async () => {
     try {
@@ -13,7 +13,7 @@ const loadItems = async () => {
 }
 console.log(`${varor.length} varor finns i listan.`);
 
-export default function ItemList({ navigation } : any) {
+export default function ItemList({ navigation, deleteProduct }: { navigation: any, deleteProduct: (product: Product) => void }) {
     return (
         <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
         data={varor /*products*/} keyExtractor={item => item.id} renderItem={({ item }) => {
@@ -26,7 +26,7 @@ export default function ItemList({ navigation } : any) {
                         store: item.store, brand: item.brand, size: item.size, pattern: item.pattern,
                         color1: item.color1, color2: item.color2, title: item.title, pic: item.pic,
                         thumb: item.thumb*/
-                    })
+                    }, [deleteProduct])
                     }}>
                         <View style={{flexDirection: 'row', gap: 5}}>
                             {!item.image ? <Image style={{width: 33, height: 33}} source={require('@/assets/images/react-logo.png')} /> : <Image source={{ uri: item.image }} />}

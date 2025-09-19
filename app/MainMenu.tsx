@@ -19,7 +19,7 @@ export default function MainMenu({ navigation } : any) {
     setProducts([...products, product]);
   }
   function deleteProduct(product: Product) {
-    
+    setProducts(products.filter(p => p.id !== product.id));
   }
 
   useEffect(() => {

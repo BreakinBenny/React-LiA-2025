@@ -21,6 +21,9 @@ export default function MainMenu({ navigation } : any) {
   function deleteProduct(product: Product) {
     setProducts(products.filter(p => p.id !== product.id));
   }
+  function editProduct(product: Product) {
+    setProducts(products.map(p => p.id === product.id ? product : p));
+  }
 
   useEffect(() => {
     // TODO: Make request to backend to fetch products
@@ -44,7 +47,7 @@ export default function MainMenu({ navigation } : any) {
             {/* LÄGG IN FILTER HÄR… */}
             
             {/* <Text style={ styles.text }>FLATLIST</Text> */}
-            <ItemList navigation={navigation} deleteProduct={deleteProduct} />
+            <ItemList navigation={navigation} deleteProduct={deleteProduct} products={varor} />
     
             {/* <ProductList /> */}
     

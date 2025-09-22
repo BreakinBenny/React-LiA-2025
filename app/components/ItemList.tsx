@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { FlatList, Image, Pressable, Text, View } from "react-native";
+import { Button, FlatList, Image, Pressable, Text, View } from "react-native";
 import { Product, varor } from "../models/varor";
 
 const loadItems = async () => {
@@ -13,10 +13,11 @@ const loadItems = async () => {
 }
 console.log(`${varor.length} varor finns i listan.`);
 
-export default function ItemList({ navigation, deleteProduct }: { navigation: any, deleteProduct: (product: Product) => void }) {
+export default function ItemList({ navigation, deleteProduct, products}:
+    { navigation: any, deleteProduct: (product: Product) => void, products: Product[] }) {
     return (
         <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
-        data={varor /*products*/} keyExtractor={item => item.id} renderItem={({ item }) => {
+        data={products} keyExtractor={item => item.id} renderItem={({ item }) => {
             return (
                 <View>
                     <Pressable key={item.id} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
@@ -24,7 +25,7 @@ export default function ItemList({ navigation, deleteProduct }: { navigation: an
                     navigation.navigate('Detailmeny', { item /*category: item.category, price: item.price,
                         checkindate: item.checkindate, checkoutdate: item.checkoutdate, sold: item.sold,
                         store: item.store, brand: item.brand, size: item.size, pattern: item.pattern,
-                        color1: item.color1, color2: item.color2, title: item.title, pic: item.pic,
+                        color1: item.color1, color2: item.color2, title: item.title, pic: item.image,
                         thumb: item.thumb*/
                     }, [deleteProduct])
                     }}>
@@ -38,6 +39,7 @@ export default function ItemList({ navigation, deleteProduct }: { navigation: an
                             Tillagd {item.checkindate ? `${item.checkindate}`: '[DATUM SAKNAS!]'}
                         </Text>
                         <Text style={{textAlign: 'right', fontWeight: 'bold', color: 'darkgreen'}}>
+                            <Button color="red" title="🗑️" onPress={() => deleteProduct(item) } />
                             {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚).` : `Inget pris satt!`} {item.sold ? `Såldes ${item.checkoutdate} ` : null}i butik: {item.store}
                         </Text>
                     </Pressable>

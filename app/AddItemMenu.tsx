@@ -1,13 +1,13 @@
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import AddItemForm from './components/AddItemForm';
-import { Product } from './models/varor';
+//import { Product } from './models/varor';
 
-export default function AddItemMenu({ navigation, addProduct }: { navigation: any, addProduct: (product: Product) => void }) {
+export default function AddItemMenu({ navigation }: any/*, addProduct: (product: Product) => void*/) {
     return (
       <SafeAreaView>
         <View style={ styles.page }>
 
-          <AddItemForm navigation={navigation} addProduct={addProduct} />
+          <AddItemForm navigation={navigation} /*addProduct={addProduct}*/ />
 
         </View>
       </SafeAreaView>

@@ -2,9 +2,9 @@
 import React, { useId, useState } from 'react';
 import { Alert, Button, Platform, TextInput, View } from 'react-native';
 
-import { Product, varor } from '../models/varor';
+import { varor } from '../models/varor';
 
-export default function AddItemForm({ navigation, addProduct }: { navigation: any, addProduct: (product: Product) => void }) {
+export default function AddItemForm({ navigation }: any/*, addProduct: (product: Product) => void*/ ) {
     const [itemCategory, setItemCategory] = useState<number | null>(null);
     const [itemStore, setItemStore] = useState<number | null>(null);
     const [itemPrice, setItemPrice] = useState<number | null>(null);

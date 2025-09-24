@@ -6,12 +6,12 @@ import { Product, varor } from "./models/varor";
 
 export default function MainMenu({ navigation } : any) {
   const [hideSold, setHideSold] = useState(false);
-
+/*
   const toggleHideSold = () => {
     const newHideSold = hideSold === false ? true : false;
     setHideSold(newHideSold);
   }
-
+*/
   const [products, setProducts] = useState<Product[]>([]);
   // <ProductItem key={item.id} image={item.image}>{item.title} /></ProductItem>
 
@@ -28,7 +28,7 @@ export default function MainMenu({ navigation } : any) {
   useEffect(() => {
     // TODO: Make request to backend to fetch products
     // For now, we use the static varor array
-    if(varor.length) return;
+    if(!varor.length) return;
     //loadProducts();
     setProducts(varor);
   }, [])
@@ -47,7 +47,7 @@ export default function MainMenu({ navigation } : any) {
             {/* LÄGG IN FILTER HÄR… */}
             
             {/* <Text style={ styles.text }>FLATLIST</Text> */}
-            <ItemList navigation={navigation} deleteProduct={deleteProduct} products={varor} />
+            <ItemList navigation={navigation} deleteProduct={deleteProduct} products={products} />
     
             {/* <ProductList /> */}
     

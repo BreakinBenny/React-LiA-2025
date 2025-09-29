@@ -2,9 +2,10 @@
 import React, { useId, useState } from 'react';
 import { Alert, Button, Platform, TextInput, View } from 'react-native';
 
-import { varor } from '../models/varor';
+import { Product } from '../models/varor';
 
-export default function AddItemForm({ navigation }: any/*, addProduct: (product: Product) => void*/ ) {
+export default function AddItemForm({navigation, products, addProduct}:
+    {navigation: any, products: Product[], addProduct: (product: Product) => void }) {
     const [itemCategory, setItemCategory] = useState<number | null>(null);
     const [itemStore, setItemStore] = useState<number | null>(null);
     const [itemPrice, setItemPrice] = useState<number | null>(null);
@@ -13,14 +14,15 @@ export default function AddItemForm({ navigation }: any/*, addProduct: (product:
 
     const handleSubmit = async (value: any) => {
         if(itemCategory && itemStore && itemPrice) {
-            varor.push({ category: itemCategory, store: itemStore, price: itemPrice, id: uniqueId,
+            addProduct({ category: itemCategory, store: itemStore, price: itemPrice, id: uniqueId,
                 title: itemTitle || "Ingen titel", image: "", brand: "", size: "", pattern: "",
-                checkindate: new Date().toISOString().split('T')[0], sold: false, checkoutdate: ""
+                checkindate: new Date().toISOString().split('T')[0], sold: false, checkoutdate: "",
+                thumb: ""
             });
-                Platform.OS === 'web' ? console.log(
+            Platform.OS === 'web' ? console.log(
                 `Lade till vara: Kategori ${itemCategory}, Butik ${itemStore}, Pris ${itemPrice} SEK, ID ${uniqueId}`) : Alert.alert(
                     'Vi har lagt till varan i registret.', '',
-                    [{ text: 'OK', onPress: () => navigation.goBack() },
+                    [{ text: 'OK'/*, onPress: () => route.goBack() */},
                         { text: 'Lägg till en till' }
                     ]);
             

@@ -22,12 +22,12 @@ export default function ItemList({ navigation, deleteProduct, products}:
                 <View>
                     <Pressable key={item.id} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
                     onPress={() => {
-                    navigation.navigate('Detailmeny', { item /*category: item.category, price: item.price,
+                    navigation.navigate('Detailmeny', { item, products /*category: item.category, price: item.price,
                         checkindate: item.checkindate, checkoutdate: item.checkoutdate, sold: item.sold,
                         store: item.store, brand: item.brand, size: item.size, pattern: item.pattern,
                         color1: item.color1, color2: item.color2, title: item.title, pic: item.image,
                         thumb: item.thumb*/
-                    }, [deleteProduct])
+                    })
                     }}>
                         <View style={{flexDirection: 'row', gap: 5}}>
                             {!item.image ? <Image style={{width: 33, height: 33}} source={require('@/assets/images/react-logo.png')} /> : <Image source={{ uri: item.image }} />}

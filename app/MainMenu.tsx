@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, Dimensions, SafeAreaView, StyleSheet, View } from "react-native";
 
-import { useNavigation } from "@react-navigation/native";
 import ItemList from "./components/ItemList";
 import SearchBar from "./components/SearchBar";
 import { Product, varor } from "./models/varor";
 
-export default function MainMenu() {
-  const navigation = useNavigation();
+export default function MainMenu({ navigation }: any) {
 /*const [hideSold, setHideSold] = useState(false);
 
   const toggleHideSold = () => {

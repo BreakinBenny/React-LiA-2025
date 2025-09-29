@@ -9,7 +9,7 @@ export default function SearchBar({navigation, products, addProduct}:
         placeholder="Sök..." returnKeyLabel="Sök" onEndEditing={(e) => { }}
       />
       <Button title="Lägg till en produkt" color='orange' onPress={() => {
-        navigation.navigate("Lägg till produkt", { addProduct: addProduct, products: products });
+        navigation.navigate("Lägg till produkt", { route: navigation, addProduct: addProduct, products: products });
       }} />
     </View>
   );

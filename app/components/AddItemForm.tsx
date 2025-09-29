@@ -4,8 +4,8 @@ import { Alert, Button, Platform, TextInput, View } from 'react-native';
 
 import { Product } from '../models/varor';
 
-export default function AddItemForm({navigation, products, addProduct}:
-    {navigation: any, products: Product[], addProduct: (product: Product) => void }) {
+export default function AddItemForm({navigation, addProduct}:
+    {navigation: any, addProduct: (product: Product) => void }) {
     const [itemCategory, setItemCategory] = useState<number | null>(null);
     const [itemStore, setItemStore] = useState<number | null>(null);
     const [itemPrice, setItemPrice] = useState<number | null>(null);

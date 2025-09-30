@@ -48,7 +48,7 @@ export default function MainMenu({ navigation }: any) {
             {/* LÄGG IN FILTER HÄR… */}
             
             {/* <Text style={ styles.text }>FLATLIST</Text> */}
-            <ItemList navigation={navigation} deleteProduct={deleteProduct} products={products} />
+            <ItemList navigation={navigation} deleteProduct={deleteProduct} editProduct={editProduct} products={products} />
     
             {/* <ProductList /> */}
     

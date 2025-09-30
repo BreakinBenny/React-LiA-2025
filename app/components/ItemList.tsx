@@ -14,7 +14,8 @@ const loadItems = async () => {
 console.log(`${varor.length} varor finns i listan.`);
 
 export default function ItemList({ navigation, deleteProduct, products}:
-    { navigation: any, deleteProduct: (product: Product) => void, products: Product[] }) {
+    { navigation: any, deleteProduct: (product: Product) => void,
+        editProduct: (product: Product) => void, products: Product[] }) {
     return (
         <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
         data={products} keyExtractor={item => item.id} renderItem={({ item }) => {

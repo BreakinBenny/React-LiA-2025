@@ -18,12 +18,22 @@ export default function MainMenu({ navigation }: any) {
 
   function addProduct(product: Product) {
     setProducts([...products, product]);
+
+    console.log(`Lägger till vara "${product.title}"...`);
+    window.alert(`Produkten "${product.title}" på ${product.price} SEK (${product.price / 20} 💚) i butik ${product.store} tillagd.`);
   }
-  function deleteProduct(product: Product) {
-    setProducts(products.filter(p => p.id !== product.id));
+  function deleteProduct(product: Product) {  //Alert m. eller utan motsvarighet här, för att bekräfta radering
+    if (window.confirm("Är du säker på att du vill radera produkten?")) {
+      setProducts(products.filter(p => p.id !== product.id));
+      console.log(`Raderar vara...`);
+      navigation.goBack( window.alert(`Produkten "${product.title}" raderad.`) );
+
+    }
   }
+
   function editProduct(product: Product) {
     setProducts(products.map(p => p.id === product.id ? product : p));
+    console.log(`Redigerar vara...`);
   }
 
   useEffect(() => {
@@ -43,7 +53,7 @@ export default function MainMenu({ navigation }: any) {
         <SafeAreaView>
           <View style={ styles.page }>
             {/* <Text style={ styles.text }>HUVUDSKÄRM</Text> */}
-            <SearchBar navigation={navigation} addProduct={addProduct} products={products} />
+            <SearchBar navigation={navigation} addProduct={addProduct} />
 
             {/* LÄGG IN FILTER HÄR… */}
             

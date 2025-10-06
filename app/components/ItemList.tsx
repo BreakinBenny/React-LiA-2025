@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Button, FlatList, Image, Pressable, Text, View } from "react-native";
+import { FlatList, Image, Pressable, Text, View } from "react-native";
 import { Product, varor } from "../models/varor";
 
 const loadItems = async () => {
@@ -21,12 +21,12 @@ export default function ItemList({ navigation, deleteProduct, editProduct, produ
             return (
                 <View>
                     <Pressable key={item.id} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
-                    onPress={() => { navigation.navigate('Detailmeny', { item, products /*category: item.category, price: item.price,
+                    onPress={() => { navigation.navigate('Detailmeny', { item, products,
+                        editProduct: editProduct, deleteProduct: deleteProduct /*category: item.category, price: item.price,
                         checkindate: item.checkindate, checkoutdate: item.checkoutdate, sold: item.sold,
                         store: item.store, brand: item.brand, size: item.size, pattern: item.pattern,
                         color1: item.color1, color2: item.color2, title: item.title, pic: item.image,
-                        thumb: item.thumb*/ })}}
-                    onPressIn={() => { console.log(`Redigerar vara...`); /*editProduct(item)*/ }}>
+                        thumb: item.thumb*/ })}}>
                         <View style={{flexDirection: 'row', gap: 5}}>
                             {!item.image ? <Image style={{width: 33, height: 33}} source={require('@/assets/images/react-logo.png')} /> : <Image source={{ uri: item.image }} />}
                             {!item.thumb ? <Image source={require('@/assets/images/tiny_logo.png')} /> : <Image source={{ uri: item.thumb }} />}
@@ -37,7 +37,6 @@ export default function ItemList({ navigation, deleteProduct, editProduct, produ
                             Tillagd {item.checkindate ? `${item.checkindate}`: '[DATUM SAKNAS!]'}
                         </Text>
                         <Text style={{textAlign: 'right', fontWeight: 'bold', color: 'darkgreen'}}>
-                            <Button color="red" title="🗑️" onPress={() => deleteProduct(item) } />
                             {'\n'}{item.price ? `Pris: ${item.price} kr (${item.price / 20} 💚).` : `Inget pris satt!`} {item.sold ? `Såldes ${item.checkoutdate} ` : null}i butik: {item.store}
                         </Text>
                     </Pressable>

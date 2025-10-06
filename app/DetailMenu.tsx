@@ -10,7 +10,13 @@ export default function DetailMenu({ route }: any) {
   return (
     <SafeAreaView>
       <View style={ styles.page }>
-        <ScrollView style={{margin: 30, backgroundColor: 'yellow', width: 400, padding: 10}}>
+        <View style={{padding: 5, borderRadius: 5, flexDirection: 'row'}}>
+          <Button color="red" title="Radera 🗑️" onPress={() => route.params.deleteProduct(route.params.item) } />
+          <Button color="goldenrod" title="Redigera 📝" onPress={() => route.params.editProduct(route.params.item) } />
+          
+          
+        </View>
+        <ScrollView style={{backgroundColor: 'yellow', width: 400, padding: 10}}>
           <ProductItem category={route.params.category} pic={route.params.pic}
           thumb={route.params.thumb} title={route.params.title} price={route.params.price}
           color1={route.params.color1} color2={route.params.color2} sold={route.params.sold}

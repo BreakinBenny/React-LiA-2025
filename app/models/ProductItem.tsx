@@ -49,7 +49,7 @@ export default function ProductItem({
 
                 {/* Såldes varan eller checkades den helt enkelt ut? Då visas antingen av följande nedan… */}
                 
-                {price ? `Pris: ${price} kr (${price / 20} 💚).` : 'PRIS SAKNAS!'} {sold&&checkoutdate ? `Såldes ${checkoutdate} ` : null}
+                {price ? `Pris: ${price} kr (${price / 20} 💚).` : 'PRIS SAKNAS!'} {sold && checkoutdate ? `Såldes ${checkoutdate} ` : null}
                 {!sold&&checkoutdate ? `Togs ur registret ${checkoutdate} `: null}i butik: {store}
             </Text>
         </View>

@@ -1,6 +1,6 @@
 //import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useId, useState } from 'react';
-import { Alert, Button, Platform, TextInput, View } from 'react-native';
+import { Button, TextInput, View } from 'react-native';
 
 import { Product } from '../models/varor';
 
@@ -19,14 +19,7 @@ export default function AddItemForm({navigation, addProduct}:
                 checkindate: new Date().toISOString().split('T')[0], sold: false, checkoutdate: "",
                 thumb: ""
             });
-            Platform.OS === 'web' ? console.log(
-                `Lade till vara: Kategori ${itemCategory}, Butik ${itemStore}, Pris ${itemPrice} SEK, ID ${uniqueId}`) : Alert.alert(
-                    'Vi har lagt till varan i registret.', '',
-                    [{ text: 'OK'/*, onPress: () => route.goBack() */},
-                        { text: 'Lägg till en till' }
-                    ]);
             
-            //setSubmittedItems([...submittedItems, { category, /*itemMediaTitle,*/ store, price }]);
             setItemCategory(0); setItemTitle(''); setItemStore(0); setItemPrice(0);
             navigation.goBack();
         }

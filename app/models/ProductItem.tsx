@@ -1,28 +1,19 @@
-import { Image, Text, View } from 'react-native';
+//import React, { useState } from 'react';
+import { Image, Text, /*TextInput,*/ View } from 'react-native';
 
-type ProductItemProps = {
-    id?: string, // Unikt ID för varje produkt
-    title?: string,
-    brand?: string, // Tillverkare, märke, musikband, artist mm...
-    pic?: string,
-    thumb?: string,
-    shortdesc?: string,
-    category?: Category,
-    size?: Size,
-    price?: number,
-    color1?: string, // Huvudfärgen, t.ex. svart ('#000')
-    color2?: string, // Färg två, t.ex. vit ('#fff') i det här fallet
-    pattern?: Pattern, // Om plagget har mönster, vilket?
-    checkindate?: Date,
-    sold?: Boolean,
-    checkoutdate?: Date,
-    store?: Store
-};
-
-export default function ProductItem({
-    id, title, brand, pic, thumb, shortdesc,
-    category, size, pattern, price, color1, color2,
-    checkindate, sold, checkoutdate, store}: ProductItemProps) {
+export default function ProductItem({id, title, brand, pic, thumb, shortdesc, category,
+    size, pattern, price, color1, color2, checkindate, sold, checkoutdate, store}: {
+        id?: string, title?: string, brand?: string,
+        pic?: string, thumb?: string, shortdesc?: string,
+        category?: Category, size?: Size, pattern?: Pattern,
+        price?: number, color1?: string, color2?: string,
+        checkindate?: Date, sold?: Boolean, checkoutdate?: Date,
+        store?: Store}) {
+    
+        //const [itemCategory, setItemCategory] = useState<number | null>(null);
+        //const [itemStore, setItemStore] = useState<number | null>(null);
+        //const [itemPrice, setItemPrice] = useState<number | null>(null);
+        //const [itemTitle, setItemTitle] = useState<string | null>(null);
 
     return (
         //TODO: BILDEN måste visas

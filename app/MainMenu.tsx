@@ -26,7 +26,7 @@ export default function MainMenu({ navigation }: any) {
     if (window.confirm("Är du säker på att du vill radera produkten?")) {
       setProducts(products.filter(p => p.id !== product.id));
       console.log(`Raderar vara...`);
-      navigation.goBack( window.alert(`Produkten "${product.title}" raderad.`) );
+      navigation.popToTop( window.alert(`Produkten "${product.title}" raderad.`) );
 
     }
   }

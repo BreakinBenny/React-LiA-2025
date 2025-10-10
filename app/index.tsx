@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import AddItemMenu from "./AddItemMenu";
 import DetailMenu from "./DetailMenu";
+import EditItemMenu from "./EditItemMenu";
 import MainMenu from "./MainMenu";
 
 const Stack = createNativeStackNavigator();
@@ -13,8 +14,9 @@ export default function Index() {
   return (
     <Stack.Navigator screenOptions={{ headerTransparent: true }}>
       <Stack.Screen name="Huvudmeny" component={MainMenu} />
-      <Stack.Screen name="Detailmeny" component={DetailMenu} options={{headerTransparent: false}} />
+      <Stack.Screen name="Detailmeny" component={DetailMenu} />
       <Stack.Screen name="Lägg till produkt" component={AddItemMenu} />
+      <Stack.Screen name="Redigera produkt" component={EditItemMenu} />
     </Stack.Navigator>
   );
 }

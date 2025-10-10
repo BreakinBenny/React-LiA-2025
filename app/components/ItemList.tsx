@@ -21,7 +21,7 @@ export default function ItemList({ navigation, deleteProduct, editProduct, produ
             return (
                 <View>
                     <Pressable key={item.id} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}
-                    onPress={() => { navigation.navigate('Detailmeny', { item, products,
+                    onPress={() => { navigation.navigate('Detailmeny', { item, products, route: navigation,
                         editProduct: editProduct, deleteProduct: deleteProduct /*category: item.category, price: item.price,
                         checkindate: item.checkindate, checkoutdate: item.checkoutdate, sold: item.sold,
                         store: item.store, brand: item.brand, size: item.size, pattern: item.pattern,

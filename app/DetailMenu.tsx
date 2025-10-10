@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Dimensions, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import { Dimensions, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import ProductItem from "./models/ProductItem";
 
 const { height, width } = Dimensions.get('window');
@@ -10,24 +10,24 @@ export default function DetailMenu({ route }: any) {
   return (
     <SafeAreaView>
       <View style={ styles.page }>
-        <View style={{padding: 5, borderRadius: 5, flexDirection: 'row'}}>
-          <Button color="red" title="Radera 🗑️" onPress={() => route.params.deleteProduct(route.params.item) } />
-          <Button color="goldenrod" title="Redigera 📝" onPress={() => route.params.editProduct(route.params.item) } />
+        <View style={{padding: 30, borderRadius: 5, flexDirection: 'row'}}>
           
           
         </View>
         <ScrollView style={{backgroundColor: 'yellow', width: 400, padding: 10}}>
-          <ProductItem category={route.params.category} pic={route.params.pic}
+          <ProductItem route={route.params.route} deleteProduct={route.params.deleteProduct} editProduct={route.params.editProduct}
+          item={route.params.item}
+          
+          category={route.params.category} pic={route.params.pic}
           thumb={route.params.thumb} title={route.params.title} price={route.params.price}
           color1={route.params.color1} color2={route.params.color2} sold={route.params.sold}
           size={route.params.size} pattern={route.params.pattern} store={route.params.store}
           checkindate={route.params.checkindate} checkoutdate={route.params.checkoutdate}
+          
           />
         </ScrollView>
 
         <View style={{flexDirection: 'row', margin: 15}}>
-          <Button title="In" color='lightgray' />
-          <Button title="Ut" color='#999999' />
         </View>
       </View>
     </SafeAreaView>

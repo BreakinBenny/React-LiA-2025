@@ -1,8 +1,10 @@
 //import React, { useState } from 'react';
-import { Image, Text, /*TextInput,*/ View } from 'react-native';
+import { Button, Image, Text, /*TextInput,*/ View } from 'react-native';
 
-export default function ProductItem({id, title, brand, pic, thumb, shortdesc, category,
-    size, pattern, price, color1, color2, checkindate, sold, checkoutdate, store}: {
+export default function ProductItem({route, deleteProduct, editProduct, item,
+    id, title, brand, pic, thumb, shortdesc, category, size, pattern, price,
+    color1, color2, checkindate, sold, checkoutdate, store}: { route: any, item: any,
+        deleteProduct: (product: any) => void, editProduct: (product: any) => void,
         id?: string, title?: string, brand?: string,
         pic?: string, thumb?: string, shortdesc?: string,
         category?: Category, size?: Size, pattern?: Pattern,
@@ -23,6 +25,10 @@ export default function ProductItem({id, title, brand, pic, thumb, shortdesc, ca
             <View style={{flexDirection: 'row', gap: 5, marginBottom: 80}}>
                 {!pic ? <Image source={require('@/assets/images/react-logo.png')} /> : <Image source={{ uri: pic }} />}
                 {!thumb ? <Image source={require('@/assets/images/favicon.png')} /> : <Image source={{ uri: thumb }} />}
+
+                <View style={{flexDirection: 'row-reverse', alignItems: 'flex-start', flex: 1}}>
+                    <Button color="red" title="Radera 🗑️" onPress={() => deleteProduct(item) } />
+                </View>
             </View>
             <View style={{flexDirection: 'column'}}>
                 {category && category==6 && title ? <Text style={{fontSize: 24, fontStyle: 'italic'}}>{title}</Text> : null
@@ -42,7 +48,13 @@ export default function ProductItem({id, title, brand, pic, thumb, shortdesc, ca
                 
                 {price ? `Pris: ${price} kr (${price / 20} 💚).` : 'PRIS SAKNAS!'} {sold && checkoutdate ? `Såldes ${checkoutdate} ` : null}
                 {!sold&&checkoutdate ? `Togs ur registret ${checkoutdate} `: null}i butik: {store}
+
+                
             </Text>
+            <View style={{flex: 1, flexDirection: 'row-reverse', alignItems: 'flex-start'}}>
+                <Button color="goldenrod" title="Redigera 📝"
+                onPress={() => route.navigate("Redigera produkt", { route: route, editProduct: editProduct })} />
+            </View>
         </View>
     );
 }

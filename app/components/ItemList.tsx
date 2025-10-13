@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { FlatList, Image, Pressable, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, Pressable, Text, View } from "react-native";
 import { Product, varor } from "../models/varor";
 
 const loadItems = async () => {
@@ -13,11 +13,11 @@ const loadItems = async () => {
 }
 console.log(`${varor.length} varor finns i listan.`);
 
-export default function ItemList({ navigation, deleteProduct, editProduct, products}: { navigation: any,
-    deleteProduct: (product: Product) => void, editProduct: (product: Product) => void, products: Product[] }) {
+export default function ItemList({ navigation, deleteProduct, editProduct, products}: { navigation: any, products: Product[],
+    deleteProduct: (product: Product) => void, editProduct: (product: Product) => void }) {
     return (
         <FlatList style={{margin: 30, backgroundColor: 'lightgray', maxHeight: 350, width: 400, padding: 10}}
-        data={products} keyExtractor={item => item.id} renderItem={({ item }) => {
+        ListEmptyComponent={ActivityIndicator} data={products} keyExtractor={item => item.id} renderItem={({ item }) => {
             return (
                 <View>
                     <Pressable key={item.id} style={{marginBottom: 10, padding: 10, backgroundColor: 'white', borderRadius: 5}}

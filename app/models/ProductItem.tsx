@@ -1,5 +1,4 @@
-//import React, { useState } from 'react';
-import { Button, Image, Text, /*TextInput,*/ View } from 'react-native';
+import { Button, Image, Text, View } from 'react-native';
 
 export default function ProductItem({route, deleteProduct, editProduct, item,
     id, title, brand, pic, thumb, shortdesc, category, size, pattern, price,
@@ -11,11 +10,6 @@ export default function ProductItem({route, deleteProduct, editProduct, item,
         price?: number, color1?: string, color2?: string,
         checkindate?: Date, sold?: Boolean, checkoutdate?: Date,
         store?: Store}) {
-    
-        //const [itemCategory, setItemCategory] = useState<number | null>(null);
-        //const [itemStore, setItemStore] = useState<number | null>(null);
-        //const [itemPrice, setItemPrice] = useState<number | null>(null);
-        //const [itemTitle, setItemTitle] = useState<string | null>(null);
 
     return (
         //TODO: BILDEN måste visas
@@ -32,10 +26,10 @@ export default function ProductItem({route, deleteProduct, editProduct, item,
             </View>
             <View style={{flexDirection: 'column'}}>
                 {category && category==6 && title ? <Text style={{fontSize: 24, fontStyle: 'italic'}}>{title}</Text> : null
-                    //Titel om definerat och vi är i kategori 6 och har variabeln definierad
+                    //Titel om definerat, vi har kategori 6 och variabeln ärdefinierad
                 }
             </View>
-            <Text>{category && category!=6 && size ? `(${size}}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
+            <Text>{category && category != 6 && size ? `(${size}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
                 ({category ? `Kategori ${category}` : 'Ingen kategori'}){'\n'}
                 
                 {category && category<6 ? `${color1} ` : null}{category && category==6 ? null : `- ${pattern}`}{'\n'}
@@ -83,6 +77,6 @@ enum Pattern {
 }
 
 enum Store {
-    Caroli = 1,
-    Kronprinsen
+    'Caroli' = 1,
+    'Kronprinsen'
 }

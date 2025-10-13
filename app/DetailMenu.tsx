@@ -18,11 +18,11 @@ export default function DetailMenu({ route }: any) {
           <ProductItem route={route.params.route} deleteProduct={route.params.deleteProduct} editProduct={route.params.editProduct}
           item={route.params.item}
           
-          category={route.params.category} pic={route.params.pic}
-          thumb={route.params.thumb} title={route.params.title} price={route.params.price}
-          color1={route.params.color1} color2={route.params.color2} sold={route.params.sold}
-          size={route.params.size} pattern={route.params.pattern} store={route.params.store}
-          checkindate={route.params.checkindate} checkoutdate={route.params.checkoutdate}
+          category={route.params.item.category} pic={route.params.item.pic}
+          thumb={route.params.item.thumb} title={route.params.item.title} price={route.params.item.price}
+          color1={route.params.item.color1} color2={route.params.item.color2} sold={route.params.item.sold}
+          size={route.params.item.size} pattern={route.params.item.pattern} store={route.params.item.store}
+          checkindate={route.params.item.checkindate} checkoutdate={route.params.item.checkoutdate}
           
           />
         </ScrollView>

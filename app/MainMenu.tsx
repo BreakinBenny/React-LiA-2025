@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Dimensions, SafeAreaView, StyleSheet, View } from "react-native";
+import { Button, SafeAreaView, StyleSheet, View } from "react-native";
 
 import ItemList from "./components/ItemList";
 import SearchBar from "./components/SearchBar";
@@ -86,25 +86,5 @@ const styles = StyleSheet.create({
   selectedText: {
     backgroundColor: "orange",
     color: "black"
-  },
-  otherstyle: {
-    flex: 1,
-    justifyContent: "space-around",
-    alignItems: "flex-start",
-    backgroundColor: "#777"
-  },
-  picStyle: {
-    resizeMode: "center",
-    width: Dimensions.get("window").width -50, height: 100,
-    flex: 1
-  },
-  flexstuff: {
-    flex: 1, fontSize: 25,
-    color: "azure",
-    margin: 20,
-    padding: 10,
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
   }
 });

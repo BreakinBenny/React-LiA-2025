@@ -7,7 +7,8 @@ export default function EditItemMenu({ route }: any) {
       <SafeAreaView>
         <View style={ styles.page }>
           
-          <EditItemForm navigation={route.params.route} editProduct={route.params.editProduct} />
+          <EditItemForm navigation={route.params.route} editProduct={route.params.editProduct}
+          item={route.params.item} />
 
         </View>
       </SafeAreaView>

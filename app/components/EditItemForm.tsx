@@ -4,12 +4,12 @@ import { Button, TextInput, View } from 'react-native';
 
 import { Product } from '../models/varor';
 
-export default function EditItemForm({navigation, editProduct}:
-    {navigation: any, editProduct: (product: Product) => void }) {
-    const [itemCategory, setItemCategory] = useState<number | null>(null);
-    const [itemStore, setItemStore] = useState<number | null>(null);
-    const [itemPrice, setItemPrice] = useState<number | null>(null);
-    const [itemTitle, setItemTitle] = useState<string | null>(null);
+export default function EditItemForm({navigation, item, editProduct}:
+    {navigation: any, item: any, editProduct: (product: Product) => void }) {
+    const [itemCategory, setItemCategory] = useState<number | null>(item.category);
+    const [itemStore, setItemStore] = useState<number | null>(item.store);
+    const [itemPrice, setItemPrice] = useState<number | null>(item.price);
+    const [itemTitle, setItemTitle] = useState<string | null>(item.title);
     const uniqueId = useId();
 
     const handleSubmit = async (value: any) => {
@@ -31,6 +31,7 @@ export default function EditItemForm({navigation, editProduct}:
     return (
         <View>
             <TextInput style={{ height: 40, width: 340, backgroundColor: 'white', marginBottom: 10, paddingLeft: 8 }}
+                defaultValue={item.title}
                 placeholder="Vad är varans titel?"
                 onChangeText={text => setItemTitle(text)}
                 value={itemTitle?.toString()}
@@ -38,7 +39,7 @@ export default function EditItemForm({navigation, editProduct}:
                 returnKeyType="done"
             />
             <label>Kategori:
-                <select name="itemCategory" defaultValue="0" onChange={e => setItemCategory(Number(e.target.value))}>
+                <select name="itemCategory" defaultValue={item.category} onChange={e => setItemCategory(Number(e.target.value))}>
                     <option value="0" disabled>(Välj kategori)</option>
                     <option value="1">Topp</option>
                     <option value="2">Byxor</option>
@@ -50,7 +51,7 @@ export default function EditItemForm({navigation, editProduct}:
             </label>
 
             <label>Butik:
-                <select name="itemStore" defaultValue="0" onChange={e => setItemStore(Number(e.target.value))}>
+                <select name="itemStore" defaultValue={item.store} onChange={e => setItemStore(Number(e.target.value))}>
                     <option value="0" disabled>(Välj butik)</option>
                     <option value="1">Caroli</option>
                     <option value="2">Kronprinsen</option>
@@ -58,6 +59,7 @@ export default function EditItemForm({navigation, editProduct}:
             </label>
             
             <TextInput style={{ height: 50, width: 340, backgroundColor: 'white', marginBottom: 10, paddingLeft: 8 }}
+                defaultValue={item.price}
                 placeholder="Vad är varans pris?"
                 onChangeText={text => setItemPrice(Number(text))}
                 value={itemPrice?.toString()}

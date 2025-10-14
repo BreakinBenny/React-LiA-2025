@@ -47,7 +47,7 @@ export default function ProductItem({route, deleteProduct, editProduct, item,
             </Text>
             <View style={{flex: 1, flexDirection: 'row-reverse', alignItems: 'flex-start'}}>
                 <Button color="goldenrod" title="Redigera 📝"
-                onPress={() => route.navigate("Redigera produkt", { route: route, editProduct: editProduct })} />
+                onPress={() => route.navigate("Redigera produkt", { item: item, route: route, editProduct: editProduct })} />
             </View>
         </View>
     );

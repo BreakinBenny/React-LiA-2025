@@ -1,9 +1,11 @@
 import { Button, Image, Text, View } from 'react-native';
 
+import { Product } from './varor';
+
 export default function ProductItem({route, deleteProduct, editProduct, item,
     id, title, brand, pic, thumb, shortdesc, category, size, pattern, price,
     color1, color2, checkindate, sold, checkoutdate, store}: { route: any, item: any,
-        deleteProduct: (product: any) => void, editProduct: (product: any) => void,
+        deleteProduct: (product: Product) => void, editProduct: (product: Product) => void,
         id?: string, title?: string, brand?: string,
         pic?: string, thumb?: string, shortdesc?: string,
         category?: Category, size?: Size, pattern?: Pattern,
@@ -29,7 +31,7 @@ export default function ProductItem({route, deleteProduct, editProduct, item,
                     //Titel om definerat, vi har kategori 6 och variabeln ärdefinierad
                 }
             </View>
-            <Text>{category && category != 6 && size ? `(${size}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
+            <Text>{category && category != 6 && size ? `(Storlek ${size}`: 'Ingen/Okänd storlek'} - ({brand ? `${brand}` : 'Inget märke'}) - {shortdesc ? `${shortdesc}`: '(Ingen beskrivning!)'}{'\n'}
                 ({category ? `Kategori ${category}` : 'Ingen kategori'}){'\n'}
                 
                 {category && category<6 ? `${color1} ` : null}{category && category==6 ? null : `- ${pattern}`}{'\n'}

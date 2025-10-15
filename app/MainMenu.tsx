@@ -32,8 +32,13 @@ export default function MainMenu({ navigation }: any) {
   }
 
   function editProduct(product: Product) {
-    setProducts(products.map(p => p.id === product.id ? product : p));
-    console.log(`Redigerar vara...`);
+    if (window.confirm("Är du säker på att du vill spara ändringarna?")) {
+      //const updatedProducts = products.map(p => p.id === product.id ? product : p);
+
+      //setProducts(updatedProducts);
+      console.log(`Sparar ändringar i varan...`);
+      navigation.goBack( window.alert(`Sparade ändrade egenskaper på vara med ID: ${product.id}.`) );
+    }
   }
 
   useEffect(() => {

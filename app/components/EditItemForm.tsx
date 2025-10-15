@@ -14,17 +14,15 @@ export default function EditItemForm({navigation, item, editProduct}:
 
     const handleSubmit = async (value: any) => {
         if(itemCategory && itemStore && itemPrice) {
-            if(window.confirm("Är du säker på att du vill spara ändringarna?")) {
-                console.log("Sparar ändringar...");
-                editProduct({ category: itemCategory, store: itemStore, price: itemPrice, id: uniqueId,
-                    title: itemTitle || "Ingen titel", image: "", brand: "", size: "", pattern: "",
-                    checkindate: new Date().toISOString().split('T')[0], sold: false, checkoutdate: "",
-                    thumb: ""
-                });
+            console.log("Sparar ändringar...");
+            editProduct({ category: itemCategory, store: itemStore, price: itemPrice, id: uniqueId,
+                title: itemTitle || "Ingen titel", image: "", brand: "", size: "", pattern: "",
+                checkindate: new Date().toISOString().split('T')[0], sold: false, checkoutdate: "",
+                thumb: ""
+            });
             
-                setItemCategory(0); setItemTitle(''); setItemStore(0); setItemPrice(0);
-                navigation.goBack( window.alert(`Sparade ändrade egenskaper på vara med ID: ${uniqueId}.`) );
-            }
+            setItemCategory(0); setItemTitle(''); setItemStore(0); setItemPrice(0);
+            navigation.goBack( /*window.alert(`Sparade ändrade egenskaper på vara med ID: ${uniqueId}.`)*/ );
         }
     }
 

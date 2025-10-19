@@ -19,25 +19,33 @@ export default function MainMenu({ navigation }: any) {
   function addProduct(product: Product) {
     setProducts([...products, product]);
 
-    console.log(`Lägger till vara "${product.title}"...`);
-    window.alert(`Produkten "${product.title}" på ${product.price} SEK (${product.price / 20} 💚) i butik ${product.store} tillagd.`);
+    console.log(`Lägger till vara "${product.title}" (ID: ${product.id})...`);
+    window.alert(`Produkten "${product.title}" på ${product.price} SEK (${product.price / 20} 💚) i butik ${product.store} tillagd.\nID: ${product.id}`);
   }
   function deleteProduct(product: Product) {  //Alert m. eller utan motsvarighet här, för att bekräfta radering
     if (window.confirm("Är du säker på att du vill radera produkten?")) {
       setProducts(products.filter(p => p.id !== product.id));
       console.log(`Raderar vara...`);
-      navigation.popToTop( window.alert(`Produkten "${product.title}" raderad.`) );
+      navigation.popToTop( window.alert(`Produkten "${product.title} (ID: ${product.id})" raderad.`) );
 
     }
   }
 
-  function editProduct(product: Product) {
+  function editProduct(updatedProduct: Product) {
     if (window.confirm("Är du säker på att du vill spara ändringarna?")) {
-      //const updatedProducts = products.map(p => p.id === product.id ? product : p);
-
-      //setProducts(updatedProducts);
+      const updatedProducts = products.map(product => {
+        if (product.id === updatedProduct.id) {
+          return updatedProduct;
+        }
+        else {
+          return product;
+        }
+      });
+      
+      //setProducts(products.map(p => p.id === product.id ? product : p));
+      setProducts(updatedProducts);
       console.log(`Sparar ändringar i varan...`);
-      navigation.goBack( window.alert(`Sparade ändrade egenskaper på vara med ID: ${product.id}.`) );
+      navigation.goBack( window.alert(`Sparade ändrade egenskaper på vara med ID: ${updatedProduct.id}.`) );
     }
   }
 

@@ -1,5 +1,5 @@
 //import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useId, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, TextInput, View } from 'react-native';
 
 import { Product } from '../models/varor';
@@ -10,26 +10,24 @@ export default function EditItemForm({navigation, item, editProduct}:
     const [itemStore, setItemStore] = useState<number | null>(item.store);
     const [itemPrice, setItemPrice] = useState<number | null>(item.price);
     const [itemTitle, setItemTitle] = useState<string | null>(item.title);
-    const uniqueId = useId();
 
     const handleSubmit = async (value: any) => {
         if(itemCategory && itemStore && itemPrice) {
             console.log("Sparar ändringar...");
-            editProduct({ category: itemCategory, store: itemStore, price: itemPrice, id: uniqueId,
+            editProduct({ category: itemCategory, store: itemStore, price: itemPrice, id: item.id,
                 title: itemTitle || "Ingen titel", image: "", brand: "", size: "", pattern: "",
                 checkindate: new Date().toISOString().split('T')[0], sold: false, checkoutdate: "",
                 thumb: ""
             });
             
             setItemCategory(0); setItemTitle(''); setItemStore(0); setItemPrice(0);
-            navigation.goBack( /*window.alert(`Sparade ändrade egenskaper på vara med ID: ${uniqueId}.`)*/ );
+            navigation.goBack();
         }
     }
 
     return (
         <View>
             <TextInput style={{ height: 40, width: 340, backgroundColor: 'white', marginBottom: 10, paddingLeft: 8 }}
-                defaultValue={item.title}
                 placeholder="Vad är varans titel?"
                 onChangeText={text => setItemTitle(text)}
                 value={itemTitle?.toString()}

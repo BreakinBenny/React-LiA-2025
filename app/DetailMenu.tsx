@@ -1,5 +1,6 @@
 import React from "react";
-import { Dimensions, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import { Dimensions, ScrollView, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import ProductItem from "./models/ProductItem";
 
 const { height, width } = Dimensions.get('window');

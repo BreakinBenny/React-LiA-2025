@@ -1,4 +1,5 @@
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import AddItemForm from './components/AddItemForm';
 
 
@@ -16,10 +17,9 @@ export default function AddItemMenu({ route }: any) {
 
 const styles = StyleSheet.create({
   page: {
-    flex: 1,
     padding: 100,
+    maxHeight: 600,
     backgroundColor: "#77EE77",
-    justifyContent: "center",
     alignItems: "center"
   }
 });

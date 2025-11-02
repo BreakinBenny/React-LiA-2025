@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, SafeAreaView, StyleSheet, View } from "react-native";
+import { Alert, Button, Platform, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import ItemList from "./components/ItemList";
 import SearchBar from "./components/SearchBar";
@@ -17,35 +18,72 @@ export default function MainMenu({ navigation }: any) {
   // <ProductItem key={item.id} image={item.image}>{item.title} /></ProductItem>
 
   function addProduct(product: Product) {
+    const productAdded = `Produkten '${product.title}' på ${product.price} SEK (${product.price / 20} 💚) i butik ${product.store} tillagd.\nID: ${product.id}`;
     setProducts([...products, product]);
 
     console.log(`Lägger till vara "${product.title}" (ID: ${product.id})...`);
-    window.alert(`Produkten "${product.title}" på ${product.price} SEK (${product.price / 20} 💚) i butik ${product.store} tillagd.\nID: ${product.id}`);
-  }
-  function deleteProduct(product: Product) {  //Alert m. eller utan motsvarighet här, för att bekräfta radering
-    if (window.confirm("Är du säker på att du vill radera produkten?")) {
-      setProducts(products.filter(p => p.id !== product.id));
-      console.log(`Raderar vara...`);
-      navigation.popToTop( window.alert(`Produkten "${product.title} (ID: ${product.id})" raderad.`) );
-
+    { Platform.OS !== 'web'
+      ? ( Alert.alert(`Produkt '${product.id}' tillagd`, productAdded) )
+      : ( window.alert(productAdded) )
     }
   }
+  function deleteProduct(product: Product) {  //Alert m. eller utan motsvarighet här, för att bekräfta radering
+    const productDeleted = `Produkten '${product.title}' (ID: ${product.id}) raderad.`;
+    const confirmDelete = `Är du säker på att du vill radera produkten med ID: '${product.id}'?`;
+
+    if (Platform.OS !== 'web') {
+      Alert.alert(`Bekräfta radering`, confirmDelete, [
+        { text: "Avbryt", style: "cancel" },
+        { text: "Radera", style: "destructive", onPress: () => {
+          setProducts(products.filter(p => p.id !== product.id));
+          console.log(`Raderar vara...`);
+          navigation.popToTop( Alert.alert(`Produkt raderad`, productDeleted) );
+        }
+      }
+      ]);
+    } else {
+      if (window.confirm(confirmDelete)) {
+        setProducts(products.filter(p => p.id !== product.id));
+        console.log(`Raderar vara...`);
+        navigation.popToTop( window.alert(productDeleted) );
+      }
+    }
+  };
 
   function editProduct(updatedProduct: Product) {
-    if (window.confirm("Är du säker på att du vill spara ändringarna?")) {
-      const updatedProducts = products.map(product => {
-        if (product.id === updatedProduct.id) {
-          return updatedProduct;
+    const productEdited = `Sparade ändrade egenskaper på vara med ID: ${updatedProduct.id}.`;
+    const confirmEdit = "Är du säker på att du vill spara ändringarna?";
+    
+    if (Platform.OS !== 'web') {
+      Alert.alert(`Bekräfta ändringar`, confirmEdit, [
+        { text: "Avbryt", style: "cancel" },
+        { text: "Spara", onPress: () => {
+          const updatedProducts = products.map(product => {
+            if (product.id === updatedProduct.id)
+              return updatedProduct;
+            else
+              return product;
+          });
+        
+          setProducts(updatedProducts);
+          console.log(`Sparar ändringar i varan...`);
+          navigation.popToTop( Alert.alert(`Ändringar sparade`, productEdited) );
         }
-        else {
-          return product;
-        }
-      });
+      }
+      ]);
+    } else {
+      if (window.confirm(confirmEdit)) {
+        const updatedProducts = products.map(product => {
+          if (product.id === updatedProduct.id)
+            return updatedProduct;
+          else
+            return product;
+        });
       
-      //setProducts(products.map(p => p.id === product.id ? product : p));
-      setProducts(updatedProducts);
-      console.log(`Sparar ändringar i varan...`);
-      navigation.goBack( window.alert(`Sparade ändrade egenskaper på vara med ID: ${updatedProduct.id}.`) );
+        setProducts(updatedProducts);
+        console.log(`Sparar ändringar i varan...`);
+        navigation.popToTop( window.alert(productEdited) );
+      }
     }
   }
 
@@ -87,17 +125,6 @@ export default function MainMenu({ navigation }: any) {
 const styles = StyleSheet.create({
   page: {
     backgroundColor: "#00BB00",
-    justifyContent: "center",
     alignItems: "center"
-  },
-  text: {
-    fontSize: 22, maxWidth: 400,
-    color: "white",
-    margin: 0,
-    padding: 5
-  },
-  selectedText: {
-    backgroundColor: "orange",
-    color: "black"
   }
 });
